@@ -1,7 +1,7 @@
-# Lớp A1 · TPTTH Tân An, Long An — 30+ Năm Tình Bạn
+# Lớp A1 · THPT Tân An, Long An — 30+ Năm Tình Bạn
 
 Trang landing page kỷ niệm hơn 30 năm tình bạn gắn kết của tập thể Lớp A1,
-Trường Phổ Thông Trung Học Tân An (Long An) — niên khóa từ năm 1993.
+Trường Trung Học Phổ Thông Tân An (Long An) — niên khóa từ năm 1993.
 
 > "Chúng ta không chỉ là bạn học cũ. Chúng ta là một phần tuổi trẻ của nhau."
 
@@ -21,4 +21,4 @@ Mở trực tiếp `index.html` bằng trình duyệt, hoặc deploy lên Vercel
 
 ## Bản quyền
 
-© Lớp A1 · Trường Phổ Thông Trung Học Tân An, Long An.
+© Lớp A1 · Trường Trung Học Phổ Thông Tân An, Long An.
