@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lớp A1 — TPTTH Tân An · 30+ Năm Tình Bạn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fdf6ec;
+    --bg-2:#f6ead6;
+    --bg-3:#fff9ef;
+    --ink:#2a1f14;
+    --ink-soft:#6b5a45;
+    --gold:#c08a3e;
+    --gold-soft:#e3b86a;
+    --coral:#d96f56;
+    --sage:#7a9a6d;
+    --sky:#7fb0c4;
+    --line:rgba(192,138,62,.32);
+    --card:rgba(255,255,255,.7);
+    --shadow:0 30px 80px -30px rgba(120,80,30,.25);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Be Vietnam Pro',system-ui,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.7;
+    overflow-x:hidden;
+  }
+  .serif{font-family:'Playfair Display',serif;font-weight:500}
+  .container{max-width:1240px;margin:0 auto;padding:0 28px}
+
+  /* ===== NAV ===== */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    backdrop-filter:blur(14px);
+    background:rgba(253,246,236,.78);
+    border-bottom:1px solid rgba(192,138,62,.12);
+    transition:all .4s;
+  }
+  nav .row{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:600;letter-spacing:.5px;color:var(--ink)}
+  .brand .crest{
+    width:38px;height:38px;border-radius:50%;
+    background:radial-gradient(circle at 30% 30%,#ffe6a8,var(--gold) 70%,#a06a1e);
+    display:grid;place-items:center;color:#fff9ef;font-family:'Playfair Display',serif;font-weight:700;
+    box-shadow:0 0 0 2px rgba(192,138,62,.18),0 8px 20px -10px var(--gold);
+  }
+  nav ul{display:flex;list-style:none;gap:28px}
+  nav a{color:var(--ink-soft);text-decoration:none;font-size:14px;letter-spacing:.4px;transition:color .25s;position:relative}
+  nav a:hover{color:var(--coral)}
+  nav a::after{content:"";position:absolute;left:0;bottom:-6px;height:1px;width:0;background:var(--coral);transition:width .3s}
+  nav a:hover::after{width:100%}
+  @media (max-width:760px){ nav ul{display:none} }
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:grid;place-items:center;
+    text-align:center;
+    overflow:hidden;
+    padding:120px 24px 80px;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(60% 50% at 50% 0%, rgba(227,184,106,.45), transparent 70%),
+      radial-gradient(45% 45% at 18% 80%, rgba(217,111,86,.28), transparent 70%),
+      radial-gradient(40% 40% at 85% 75%, rgba(127,176,196,.28), transparent 70%),
+      linear-gradient(180deg, #fff9ef 0%, #fdf2dd 100%);
+  }
+  .hero-bg{
+    position:absolute;inset:0;
+    background-image:url('viber_image_2026-03-29_19-23-42-243.jpg');
+    background-size:cover;background-position:center;
+    opacity:.22;filter:blur(2px) saturate(1.15) brightness(1.05);
+    z-index:0;
+    mix-blend-mode:luminosity;
+  }
+  .hero-vignette{
+    position:absolute;inset:0;
+    background:radial-gradient(ellipse at center, transparent 30%, rgba(253,246,236,.55) 85%);
+    z-index:1;
+  }
+  .hero-inner{
+    position:relative;z-index:2;max-width:1000px;animation:fadeUp 1.2s ease both;
+    padding:48px 40px;
+    border-radius:28px;
+    background:radial-gradient(ellipse at center, rgba(255,249,239,.82) 0%, rgba(255,249,239,.55) 55%, rgba(255,249,239,0) 78%);
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:14px;
+    color:var(--coral);font-size:13px;letter-spacing:6px;text-transform:uppercase;
+    margin-bottom:28px;font-weight:500;
+  }
+  .eyebrow .line{width:46px;height:1px;background:var(--coral)}
+  h1.title{
+    font-family:'Playfair Display',serif;
+    font-weight:700;
+    font-size:clamp(44px,8vw,104px);
+    line-height:1.02;
+    letter-spacing:-1px;
+    margin-bottom:24px;
+    color:var(--ink);
+    text-shadow:0 2px 18px rgba(255,249,239,.9), 0 1px 3px rgba(255,249,239,.8);
+  }
+  h1.title .accent{color:var(--coral);font-style:italic;font-weight:700}
+  h1.title .light{font-weight:600;color:var(--gold)}
+  .lead{
+    max-width:680px;margin:0 auto 38px;
+    color:var(--ink);font-size:19px;font-weight:500;
+    text-shadow:0 1px 10px rgba(255,249,239,.9);
+  }
+  .hero-meta{
+    display:inline-flex;align-items:center;gap:24px;
+    padding:14px 28px;border:1px solid var(--line);border-radius:999px;
+    background:rgba(255,255,255,.65);
+    font-size:14px;color:var(--ink-soft);letter-spacing:1px;
+    box-shadow:0 8px 24px -12px rgba(192,138,62,.25);
+  }
+  .hero-meta strong{color:var(--coral);font-weight:600}
+  .hero-meta .dot{width:4px;height:4px;border-radius:50%;background:var(--gold)}
+  .scroll-cue{
+    position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
+    color:var(--gold);font-size:11px;letter-spacing:3px;text-transform:uppercase;z-index:2;
+    display:flex;flex-direction:column;align-items:center;gap:10px;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  .scroll-cue::after{content:"";width:1px;height:40px;background:linear-gradient(to bottom,var(--gold),transparent)}
+
+  /* ===== SECTIONS ===== */
+  section{padding:120px 0;position:relative}
+  .section-head{text-align:center;margin-bottom:70px}
+  .section-eyebrow{
+    color:var(--coral);font-size:12px;letter-spacing:5px;text-transform:uppercase;
+    margin-bottom:18px;display:inline-block;font-weight:600;
+  }
+  h2{
+    font-family:'Playfair Display',serif;font-weight:500;
+    font-size:clamp(32px,5vw,54px);
+    line-height:1.15;letter-spacing:-.5px;
+    max-width:780px;margin:0 auto 18px;
+    color:var(--ink);
+  }
+  h2 em{color:var(--coral);font-style:italic}
+  .section-sub{color:var(--ink-soft);max-width:640px;margin:0 auto;font-size:16px}
+
+  /* ===== INTRO / STORY ===== */
+  .story{
+    display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;
+  }
+  @media (max-width:900px){.story{grid-template-columns:1fr;gap:50px}}
+  .story-img{
+    position:relative;border-radius:6px;overflow:hidden;
+    box-shadow:var(--shadow);
+    aspect-ratio:4/5;
+  }
+  .story-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s}
+  .story-img:hover img{transform:scale(1.04)}
+  .story-img::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,transparent 60%,rgba(42,31,20,.35));
+  }
+  .story-frame{
+    position:absolute;inset:14px;border:1px solid rgba(255,249,239,.7);pointer-events:none;z-index:2;
+  }
+  .story h3{
+    font-family:'Playfair Display',serif;font-weight:500;
+    font-size:clamp(28px,3.5vw,42px);line-height:1.2;margin-bottom:24px;color:var(--ink);
+  }
+  .story h3 em{color:var(--coral);font-style:italic}
+  .story p{color:var(--ink-soft);margin-bottom:18px}
+  .story .quote{
+    border-left:3px solid var(--coral);padding-left:22px;margin-top:30px;
+    font-family:'Playfair Display',serif;font-style:italic;font-size:18px;color:var(--ink);
+  }
+
+  /* ===== PULL QUOTE BANNER ===== */
+  .pullquote{
+    position:relative;padding:120px 24px;text-align:center;overflow:hidden;
+    background:
+      linear-gradient(135deg, #fff5e0 0%, #ffe6cc 45%, #ffd9c2 100%);
+    border-top:1px solid rgba(192,138,62,.15);
+    border-bottom:1px solid rgba(192,138,62,.15);
+  }
+  .pullquote::before, .pullquote::after{
+    content:"";position:absolute;border-radius:50%;filter:blur(60px);opacity:.55;
+  }
+  .pullquote::before{width:340px;height:340px;background:#ffd47a;top:-80px;left:-80px}
+  .pullquote::after{width:380px;height:380px;background:#ffb8a3;bottom:-100px;right:-80px}
+  .pullquote .inner{position:relative;z-index:2;max-width:920px;margin:0 auto}
+  .pullquote .mark{
+    font-family:'Playfair Display',serif;font-size:120px;line-height:.4;
+    color:var(--coral);opacity:.5;display:block;margin-bottom:10px;
+  }
+  .pullquote q{
+    quotes:none;
+    font-family:'Playfair Display',serif;font-style:italic;
+    font-size:clamp(26px,4.2vw,46px);
+    line-height:1.3;color:var(--ink);font-weight:500;
+    display:block;margin-bottom:30px;
+  }
+  .pullquote q .hl{
+    background:linear-gradient(180deg, transparent 60%, rgba(217,111,86,.28) 60%);
+    padding:0 4px;color:var(--coral);
+  }
+  .pullquote .by{
+    display:inline-flex;align-items:center;gap:14px;
+    color:var(--gold);font-size:12px;letter-spacing:5px;text-transform:uppercase;font-weight:600;
+  }
+  .pullquote .by .line{width:36px;height:1px;background:var(--gold)}
+
+  /* ===== STATS ===== */
+  .stats{
+    background:linear-gradient(180deg,#fff9ef,#fdeed2);
+    padding:80px 0;border-top:1px solid rgba(192,138,62,.12);border-bottom:1px solid rgba(192,138,62,.12);
+  }
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;text-align:center}
+  @media (max-width:760px){.stats-grid{grid-template-columns:repeat(2,1fr);gap:48px}}
+  .stat .num{
+    font-family:'Playfair Display',serif;font-size:clamp(48px,6vw,72px);
+    color:var(--coral);line-height:1;letter-spacing:-1px;margin-bottom:8px;
+  }
+  .stat .label{color:var(--ink-soft);font-size:12px;letter-spacing:3px;text-transform:uppercase;font-weight:500}
+
+  /* ===== GALLERY ===== */
+  .gallery-wrap{margin-top:50px}
+  .gallery{
+    columns:3;column-gap:18px;
+  }
+  @media (max-width:900px){.gallery{columns:2}}
+  @media (max-width:560px){.gallery{columns:1}}
+  .photo{
+    position:relative;break-inside:avoid;margin-bottom:18px;
+    border-radius:8px;overflow:hidden;cursor:pointer;
+    box-shadow:0 14px 32px -18px rgba(120,80,30,.4);
+    background:#fff;
+    border:1px solid rgba(192,138,62,.12);
+    transition:transform .4s, box-shadow .4s;
+  }
+  .photo img{width:100%;height:auto;display:block;transition:transform .9s ease, filter .6s}
+  .photo::before{
+    content:"";position:absolute;inset:0;z-index:1;
+    background:linear-gradient(180deg,transparent 55%,rgba(42,31,20,.62));
+    opacity:0;transition:opacity .35s;
+  }
+  .photo .cap{
+    position:absolute;left:18px;bottom:14px;z-index:2;color:#fff9ef;
+    font-size:13px;letter-spacing:1.5px;text-transform:uppercase;
+    opacity:0;transform:translateY(8px);transition:all .4s;
+    font-weight:500;
+  }
+  .photo:hover{transform:translateY(-4px);box-shadow:0 20px 40px -16px rgba(120,80,30,.45)}
+  .photo:hover::before{opacity:1}
+  .photo:hover .cap{opacity:1;transform:translateY(0)}
+  .photo:hover img{transform:scale(1.05);filter:brightness(1.05)}
+
+  /* ===== TIMELINE ===== */
+  .timeline{position:relative;max-width:880px;margin:0 auto;padding:30px 0}
+  .timeline::before{
+    content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;
+    background:linear-gradient(to bottom,transparent,var(--line),transparent);
+  }
+  .tl-item{
+    position:relative;width:50%;padding:24px 50px;
+  }
+  .tl-item:nth-child(odd){left:0;text-align:right}
+  .tl-item:nth-child(even){left:50%}
+  .tl-item::before{
+    content:"";position:absolute;top:38px;width:14px;height:14px;border-radius:50%;
+    background:var(--coral);box-shadow:0 0 0 5px rgba(217,111,86,.22), 0 0 0 1px #fff;
+  }
+  .tl-item:nth-child(odd)::before{right:-7px}
+  .tl-item:nth-child(even)::before{left:-7px}
+  .tl-year{
+    font-family:'Playfair Display',serif;font-size:30px;color:var(--coral);margin-bottom:8px;font-style:italic;font-weight:600;
+  }
+  .tl-text{color:var(--ink-soft);font-size:15px}
+  @media (max-width:760px){
+    .timeline::before{left:18px}
+    .tl-item{width:100%;left:0!important;text-align:left!important;padding:18px 18px 18px 50px}
+    .tl-item::before{left:12px!important;right:auto!important}
+  }
+
+  /* ===== VALUES ===== */
+  .values{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:30px}
+  @media (max-width:860px){.values{grid-template-columns:1fr}}
+  .value{
+    padding:42px 32px;border:1px solid var(--line);border-radius:14px;
+    background:linear-gradient(180deg,#ffffff,#fff9ef);
+    transition:transform .4s,border-color .4s,box-shadow .4s;
+    box-shadow:0 12px 30px -18px rgba(192,138,62,.25);
+  }
+  .value:hover{transform:translateY(-6px);border-color:var(--coral);box-shadow:0 22px 40px -20px rgba(217,111,86,.35)}
+  .value .icon{
+    width:54px;height:54px;border-radius:50%;
+    background:linear-gradient(135deg,var(--coral),#f0a890);
+    display:grid;place-items:center;color:#fff9ef;
+    margin-bottom:22px;font-family:'Playfair Display',serif;font-size:20px;font-style:italic;font-weight:600;
+    box-shadow:0 8px 20px -8px rgba(217,111,86,.5);
+  }
+  .value:nth-child(2) .icon{background:linear-gradient(135deg,var(--gold),var(--gold-soft));box-shadow:0 8px 20px -8px rgba(192,138,62,.5)}
+  .value:nth-child(3) .icon{background:linear-gradient(135deg,var(--sage),#a7c39a);box-shadow:0 8px 20px -8px rgba(122,154,109,.5)}
+  .value h4{font-family:'Playfair Display',serif;font-weight:600;font-size:24px;margin-bottom:12px;color:var(--ink)}
+  .value p{color:var(--ink-soft);font-size:15px}
+
+  /* ===== CTA ===== */
+  .cta{
+    position:relative;text-align:center;
+    padding:140px 24px;
+    background:
+      linear-gradient(rgba(255,249,239,.82),rgba(255,229,200,.85)),
+      url('viber_image_2026-05-29_19-47-40-172.jpg') center/cover fixed;
+  }
+  .cta::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(ellipse at center,transparent 40%,rgba(255,249,239,.5) 90%);
+    pointer-events:none;
+  }
+  .cta .container{position:relative;z-index:1}
+  .cta h2{font-size:clamp(36px,5vw,64px);margin-bottom:24px;color:var(--ink)}
+  .cta p{color:var(--ink-soft);max-width:640px;margin:0 auto 22px;font-size:17px}
+  .signature{
+    font-family:'Playfair Display',serif;font-style:italic;
+    color:var(--coral);font-size:24px;letter-spacing:1px;font-weight:600;
+    margin-top:18px;
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:18px;margin:30px 0;
+    color:var(--coral);
+  }
+  .ornament .line{width:80px;height:1px;background:var(--coral)}
+  .ornament .star{font-size:18px}
+
+  /* ===== FOOTER ===== */
+  footer{
+    padding:50px 0 36px;text-align:center;
+    border-top:1px solid rgba(192,138,62,.18);
+    background:linear-gradient(180deg,#fff9ef,#fdeed2);
+    color:var(--ink-soft);font-size:13px;letter-spacing:1px;
+  }
+  footer .brand-mini{margin-bottom:14px;color:var(--coral);font-family:'Playfair Display',serif;font-size:20px;font-style:italic;font-weight:600}
+
+  /* ===== LIGHTBOX ===== */
+  .lightbox{
+    position:fixed;inset:0;background:rgba(42,31,20,.88);z-index:200;
+    display:none;align-items:center;justify-content:center;padding:30px;
+    cursor:pointer;backdrop-filter:blur(6px);
+  }
+  .lightbox.active{display:flex;animation:fadeUp .3s ease both}
+  .lightbox img{max-width:92vw;max-height:88vh;border-radius:8px;box-shadow:0 30px 80px rgba(0,0,0,.6);border:3px solid #fff9ef}
+  .lightbox .close{
+    position:absolute;top:24px;right:30px;color:#fff9ef;font-size:34px;
+    background:none;border:none;cursor:pointer;line-height:1;
+  }
+
+  /* ===== Anim ===== */
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+  .reveal{opacity:0;transform:translateY(30px);transition:all .9s ease}
+  .reveal.in{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container row">
+    <div class="brand"><div class="crest">A1</div><span>Lớp A1 · TPTTH Tân An</span></div>
+    <ul>
+      <li><a href="#story">Câu chuyện</a></li>
+      <li><a href="#gallery">Khoảnh khắc</a></li>
+      <li><a href="#timeline">Hành trình</a></li>
+      <li><a href="#values">Tình bạn</a></li>
+      <li><a href="#cta">Lời nhắn</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-vignette"></div>
+  <div class="hero-inner">
+    <div class="eyebrow"><span class="line"></span> Lớp A1 · TPTTH Tân An, Long An <span class="line"></span></div>
+    <h1 class="title">
+      Hơn <span class="accent">30 năm</span><br/>
+      <span class="light">một tình bạn,</span><br/>
+      một mái nhà.
+    </h1>
+    <p class="lead">
+      Từ những ngày cắp sách đến trường ở Tân An, đến hôm nay — chúng ta vẫn ở bên nhau.
+      Cùng cười, cùng khóc, cùng đi qua những tháng năm đẹp nhất của cuộc đời.
+    </p>
+    <div class="hero-meta">
+      <span>Từ năm <strong>1993</strong></span>
+      <span class="dot"></span>
+      <span><strong>Tân An</strong> · Long An</span>
+      <span class="dot"></span>
+      <span>Mãi mãi <strong>A1</strong></span>
+    </div>
+  </div>
+  <div class="scroll-cue">Cuộn xuống</div>
+</header>
+
+<!-- STORY -->
+<section id="story">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-eyebrow">Câu chuyện của chúng ta</span>
+      <h2>Bắt đầu từ một <em>mái trường</em>, kéo dài <em>trọn đời</em>.</h2>
+    </div>
+
+    <div class="story">
+      <div class="story-img reveal">
+        <img src="viber_image_2026-03-27_17-19-54-860.jpg" alt="Lớp A1"/>
+        <div class="story-frame"></div>
+      </div>
+      <div class="reveal">
+        <h3>Một thời <em>áo trắng</em>, một đời <em>bạn bè</em>.</h3>
+        <p>
+          Có những người ta gặp trong đời chỉ là thoáng qua. Nhưng có những người, một khi
+          đã gặp, là ở lại mãi mãi. Đó chính là chúng ta — Lớp A1, Trường Phổ Thông Trung Học Tân An, Long An.
+        </p>
+        <p>
+          Hơn 30 năm trôi qua kể từ ngày chúng ta ngồi chung một lớp, viết chung một bảng đen,
+          cùng nhau lớn lên dưới mái trường thân yêu. Người ở lại quê hương, người đi xa lập nghiệp,
+          nhưng tình bạn A1 chưa bao giờ phai nhạt.
+        </p>
+        <div class="quote">
+          "Bạn bè không phải là người đi cùng ta cả chặng đường, mà là người luôn ở đó mỗi khi ta cần."
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PULL QUOTE -->
+<section class="pullquote reveal">
+  <div class="inner">
+    <span class="mark">“</span>
+    <q>Chúng ta không chỉ là <span class="hl">bạn học cũ</span>.<br/>Chúng ta là một phần <span class="hl">tuổi trẻ</span> của nhau.</q>
+    <div class="by"><span class="line"></span> Lớp A1 · TPTTH Tân An <span class="line"></span></div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat reveal"><div class="num">30+</div><div class="label">Năm tình bạn</div></div>
+      <div class="stat reveal"><div class="num">1</div><div class="label">Lớp A1 duy nhất</div></div>
+      <div class="stat reveal"><div class="num">∞</div><div class="label">Kỷ niệm</div></div>
+      <div class="stat reveal"><div class="num">100%</div><div class="label">Gắn kết</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-eyebrow">Khoảnh khắc</span>
+      <h2>Những <em>khung hình</em> không bao giờ cũ</h2>
+      <p class="section-sub">Mỗi tấm ảnh là một câu chuyện. Mỗi nụ cười là một lời nhắc nhớ — chúng ta đã, đang, và sẽ luôn bên nhau.</p>
+    </div>
+
+    <div class="gallery-wrap reveal">
+      <div class="gallery" id="gallery">
+        <div class="photo"><img src="viber_image_2026-01-16_19-41-02-409.jpg" loading="lazy" alt=""/><div class="cap">A1 · Ký ức</div></div>
+        <div class="photo"><img src="viber_image_2026-01-16_20-02-29-273.jpg" loading="lazy" alt=""/><div class="cap">A1 · Hội ngộ</div></div>
+        <div class="photo"><img src="viber_image_2026-01-24_08-55-45-329.jpg" loading="lazy" alt=""/><div class="cap">A1 · Một thời</div></div>
+        <div class="photo"><img src="viber_image_2026-01-24_11-35-26-340.jpg" loading="lazy" alt=""/><div class="cap">A1 · Bạn bè</div></div>
+        <div class="photo"><img src="viber_image_2026-03-13_13-34-18-383.jpg" loading="lazy" alt=""/><div class="cap">A1 · Khoảnh khắc</div></div>
+        <div class="photo"><img src="viber_image_2026-03-13_17-59-12-206.jpg" loading="lazy" alt=""/><div class="cap">A1 · Mãi mãi</div></div>
+        <div class="photo"><img src="viber_image_2026-03-27_17-19-54-860.jpg" loading="lazy" alt=""/><div class="cap">A1 · Tình thân</div></div>
+        <div class="photo"><img src="viber_image_2026-03-27_17-43-04-028.jpg" loading="lazy" alt=""/><div class="cap">A1 · Sum vầy</div></div>
+        <div class="photo"><img src="viber_image_2026-03-27_21-53-41-158.jpg" loading="lazy" alt=""/><div class="cap">A1 · Đêm hội</div></div>
+        <div class="photo"><img src="viber_image_2026-03-28_08-14-50-924.jpg" loading="lazy" alt=""/><div class="cap">A1 · Ban mai</div></div>
+        <div class="photo"><img src="viber_image_2026-03-29_19-23-42-081.jpg" loading="lazy" alt=""/><div class="cap">A1 · Ấm áp</div></div>
+        <div class="photo"><img src="viber_image_2026-03-29_19-23-42-243.jpg" loading="lazy" alt=""/><div class="cap">A1 · Nụ cười</div></div>
+        <div class="photo"><img src="viber_image_2026-04-09_10-30-22-941.jpg" loading="lazy" alt=""/><div class="cap">A1 · Tháng tư</div></div>
+        <div class="photo"><img src="viber_image_2026-04-13_22-05-52-468.jpg" loading="lazy" alt=""/><div class="cap">A1 · Đêm về</div></div>
+        <div class="photo"><img src="viber_image_2026-04-24_19-44-50-321.jpg" loading="lazy" alt=""/><div class="cap">A1 · Bên nhau</div></div>
+        <div class="photo"><img src="viber_image_2026-04-25_21-25-41-644.jpg" loading="lazy" alt=""/><div class="cap">A1 · Hội ngộ</div></div>
+        <div class="photo"><img src="viber_image_2026-04-25_21-31-00-926.jpg" loading="lazy" alt=""/><div class="cap">A1 · Vui vầy</div></div>
+        <div class="photo"><img src="viber_image_2026-05-02_11-03-56-631.jpg" loading="lazy" alt=""/><div class="cap">A1 · Sáng tháng năm</div></div>
+        <div class="photo"><img src="viber_image_2026-05-22_20-05-43-737.jpg" loading="lazy" alt=""/><div class="cap">A1 · Kỷ niệm</div></div>
+        <div class="photo"><img src="viber_image_2026-05-29_19-47-40-172.jpg" loading="lazy" alt=""/><div class="cap">A1 · Đoàn viên</div></div>
+        <div class="photo"><img src="viber_image_2026-05-30_16-20-40-635.jpg" loading="lazy" alt=""/><div class="cap">A1 · Chiều hè</div></div>
+        <div class="photo"><img src="viber_image_2026-05-30_17-00-04-350.jpg" loading="lazy" alt=""/><div class="cap">A1 · Hoàng hôn</div></div>
+        <div class="photo"><img src="viber_image_2026-06-02_17-57-08-187.jpg" loading="lazy" alt=""/><div class="cap">A1 · Tháng sáu</div></div>
+        <div class="photo"><img src="viber_image_2026-06-04_09-01-01-540.jpg" loading="lazy" alt=""/><div class="cap">A1 · Nắng mai</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline" style="background:linear-gradient(180deg,#fff9ef,#fdeed2)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-eyebrow">Hành trình</span>
+      <h2>Ba thập kỷ — <em>một chặng đường</em></h2>
+      <p class="section-sub">Thời gian trôi, con người đổi thay, nhưng tình bạn A1 vẫn vẹn nguyên như ngày đầu.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-year">1993</div>
+        <div class="tl-text">Lớp A1 ra đời tại TPTTH Tân An. Những cô cậu học trò áo trắng lần đầu gặp nhau, không biết rằng đây sẽ là khởi đầu của một tình bạn cả đời.</div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-year">Tốt nghiệp</div>
+        <div class="tl-text">Chia tay mái trường. Mỗi người một ngã rẽ — đại học, công việc, gia đình. Nhưng A1 vẫn luôn là điểm hẹn để trở về.</div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-year">Trưởng thành</div>
+        <div class="tl-text">Người trở thành bác sĩ, kỹ sư, giáo viên, doanh nhân... Mỗi người một con đường, nhưng không ai quên nhau.</div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-year">Hôm nay · 2026</div>
+        <div class="tl-text">Hơn 30 năm sau, chúng ta vẫn họp lớp, vẫn cười đùa như ngày xưa, vẫn gọi nhau bằng những biệt danh thuở học trò. Tình bạn — không già đi theo năm tháng.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section id="values">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-eyebrow">Tình bạn A1</span>
+      <h2>Điều giữ chúng ta <em>bên nhau</em></h2>
+    </div>
+
+    <div class="values">
+      <div class="value reveal">
+        <div class="icon">I</div>
+        <h4>Yêu thương</h4>
+        <p>Yêu thương không cần lý do. Bạn bè A1 — là yêu nhau bằng cả trái tim, không tính toán, không hơn thua.</p>
+      </div>
+      <div class="value reveal">
+        <div class="icon">II</div>
+        <h4>Sẻ chia</h4>
+        <p>Vui có nhau, buồn có nhau. Mỗi khi cuộc sống có sóng gió, A1 vẫn luôn là điểm tựa vững chắc nhất.</p>
+      </div>
+      <div class="value reveal">
+        <div class="icon">III</div>
+        <h4>Giúp đỡ</h4>
+        <p>Không chỉ là kỷ niệm, A1 còn là gia đình. Sẵn sàng giúp đỡ nhau trong công việc, cuộc sống, gia đình.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="cta">
+  <div class="container reveal">
+    <span class="section-eyebrow">Lời nhắn gửi</span>
+    <h2>Mãi mãi là <em>A1</em>.</h2>
+    <div class="ornament"><span class="line"></span><span class="star">✦</span><span class="line"></span></div>
+    <p>
+      Hơn 30 năm là một chặng đường dài. Nhưng cuộc đời còn dài hơn thế.<br/>
+      Hãy tiếp tục gọi nhau, tiếp tục gặp nhau, tiếp tục yêu thương và giúp đỡ nhau —
+      như cách chúng ta đã làm suốt ba thập kỷ qua.
+    </p>
+    <p>
+      Vì tình bạn — không đo bằng thời gian, mà đo bằng những gì chúng ta đã cùng nhau đi qua.
+    </p>
+    <div class="signature">— Lớp A1 · TPTTH Tân An, Long An —</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="brand-mini">A1 forever</div>
+    <div>© Lớp A1 · Trường Phổ Thông Trung Học Tân An, Long An</div>
+    <div style="margin-top:8px;opacity:.6">Một mái trường · Một tình bạn · Một đời gắn bó</div>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="close" aria-label="Close">×</button>
+  <img src="" alt="" id="lightbox-img"/>
+</div>
+
+<script>
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // Lightbox
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  document.querySelectorAll('.photo img').forEach(img=>{
+    img.addEventListener('click',()=>{ lbImg.src = img.src; lb.classList.add('active'); });
+  });
+  lb.addEventListener('click',()=>{ lb.classList.remove('active'); });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') lb.classList.remove('active'); });
+
+  // Subtle nav shrink
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll',()=>{
+    if(window.scrollY>40){ nav.style.background='rgba(253,246,236,.92)'; nav.style.boxShadow='0 10px 30px -20px rgba(120,80,30,.3)'; }
+    else { nav.style.background='rgba(253,246,236,.78)'; nav.style.boxShadow='none'; }
+  });
+</script>
+</body>
+</html>
