@@ -261,6 +261,21 @@
   .photo:hover .cap{opacity:1;transform:translateY(0)}
   .photo:hover img{transform:scale(1.05);filter:brightness(1.05)}
 
+  /* ===== VIDEO ===== */
+  .videosec{background:linear-gradient(180deg,#fdeed2,#fff9ef)}
+  .video-frame{
+    position:relative;max-width:920px;margin:50px auto 0;
+    border-radius:16px;overflow:hidden;
+    border:1px solid rgba(192,138,62,.2);
+    box-shadow:0 30px 70px -30px rgba(120,80,30,.45);
+    background:#1a120a;
+  }
+  .video-frame video{width:100%;display:block;aspect-ratio:16/9;background:#1a120a}
+  .video-cap{
+    text-align:center;margin-top:24px;color:var(--ink-soft);font-size:14px;letter-spacing:1px;
+  }
+  .video-cap strong{color:var(--coral);font-weight:600}
+
   /* ===== TIMELINE ===== */
   .timeline{position:relative;max-width:880px;margin:0 auto;padding:30px 0}
   .timeline::before{
@@ -376,6 +391,7 @@
     <ul>
       <li><a href="#story">Câu chuyện</a></li>
       <li><a href="#gallery">Khoảnh khắc</a></li>
+      <li><a href="#video">Thước phim</a></li>
       <li><a href="#timeline">Hành trình</a></li>
       <li><a href="#values">Tình bạn</a></li>
       <li><a href="#cta">Lời nhắn</a></li>
@@ -499,6 +515,25 @@
         <div class="photo"><img src="viber_image_2026-06-04_09-01-01-540.jpg" loading="lazy" alt=""/><div class="cap">A1 · Nắng mai</div></div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section id="video" class="videosec">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-eyebrow">Thước phim</span>
+      <h2>Khoảnh khắc <em>sống động</em></h2>
+      <p class="section-sub">Không chỉ là những tấm ảnh — hãy cùng xem lại thước phim ghi lại tình cảm ấm áp của tập thể Lớp A1.</p>
+    </div>
+
+    <div class="video-frame reveal">
+      <video controls preload="metadata" poster="lop-a1-video-poster.jpg" playsinline>
+        <source src="lop-a1-video.mp4" type="video/mp4" />
+        Trình duyệt của bạn không hỗ trợ phát video. Bạn có thể tải video về để xem.
+      </video>
+    </div>
+    <p class="video-cap reveal"><strong>Đám Giỗ Ba Trác</strong> · Họp mặt Lớp A1 · 10/2025</p>
   </div>
 </section>
 
