@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Đăng Ký Size Áo – Họp Lớp 30 Năm · Lớp A1 THPT Tân An</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #fdf6ec;
+    --surface: #fff9f2;
+    --coral: #d96f56;
+    --coral-light: #f0c4b4;
+    --gold: #c08a3e;
+    --sage: #7a9a6d;
+    --ink: #2c2017;
+    --muted: #7a6a55;
+    --border: #e8d9c8;
+    --radius: 12px;
+    --shadow: 0 4px 24px rgba(44,32,23,.08);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+  }
+
+  /* ── Header ── */
+  .page-header {
+    background: linear-gradient(135deg, #2c2017 0%, #4a3020 100%);
+    color: #fff;
+    text-align: center;
+    padding: 56px 24px 48px;
+  }
+  .page-header .eyebrow {
+    font-size: .8rem;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--coral-light);
+    margin-bottom: 12px;
+    display: block;
+  }
+  .page-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .page-header h1 em { color: #f0c4b4; font-style: italic; }
+  .page-header p {
+    font-size: .95rem;
+    color: rgba(255,255,255,.7);
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* ── Layout ── */
+  .container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+
+  /* ── Size chart ── */
+  .size-info {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 32px;
+  }
+  .size-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .size-tabs { display: flex; gap: 8px; margin-bottom: 16px; }
+  .size-tab {
+    padding: 6px 18px;
+    border-radius: 20px;
+    border: 1.5px solid var(--border);
+    background: none;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: .85rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--muted);
+    transition: all .2s;
+  }
+  .size-tab.active { background: var(--coral); border-color: var(--coral); color: #fff; }
+  .size-table { display: none; width: 100%; border-collapse: collapse; font-size: .82rem; }
+  .size-table.visible { display: table; }
+  .size-table th {
+    background: #f5ebe0;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+    color: var(--muted);
+    font-size: .75rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+  .size-table td { padding: 8px 12px; border-top: 1px solid var(--border); }
+  .size-table tr:hover td { background: #fdf0e6; }
+  .size-badge {
+    display: inline-block;
+    background: var(--coral);
+    color: #fff;
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-weight: 700;
+    font-size: .8rem;
+  }
+
+  /* ── Form card ── */
+  .form-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 36px 32px;
+    box-shadow: var(--shadow);
+  }
+  .form-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--ink);
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--coral-light);
+  }
+
+  .field { margin-bottom: 22px; }
+  .field label {
+    display: block;
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .field label .req { color: var(--coral); margin-left: 3px; }
+  .field input[type="text"],
+  .field input[type="tel"],
+  .field select,
+  .field textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    background: #fff;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: .95rem;
+    color: var(--ink);
+    transition: border-color .2s, box-shadow .2s;
+    appearance: none;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus {
+    outline: none;
+    border-color: var(--coral);
+    box-shadow: 0 0 0 3px rgba(217,111,86,.12);
+  }
+  .field textarea { resize: vertical; min-height: 90px; }
+
+  /* Gender radio */
+  .radio-group { display: flex; gap: 12px; flex-wrap: wrap; }
+  .radio-label {
+    flex: 1; min-width: 120px;
+    display: flex; align-items: center; gap: 10px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: all .2s;
+    background: #fff;
+  }
+  .radio-label:has(input:checked) {
+    border-color: var(--coral);
+    background: rgba(217,111,86,.06);
+  }
+  .radio-label input[type="radio"] { accent-color: var(--coral); width: 18px; height: 18px; }
+  .radio-label .gender-icon { font-size: 1.2rem; }
+  .radio-label .gender-text { font-weight: 600; font-size: .95rem; }
+
+  /* Size select wrapper */
+  .select-wrapper { position: relative; }
+  .select-wrapper select { padding-right: 40px; }
+  .select-wrapper::after {
+    content: '▾';
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted);
+    pointer-events: none;
+    font-size: .9rem;
+  }
+
+  /* Size section toggle */
+  .size-section { display: none; }
+  .size-section.visible { display: block; }
+
+  .size-hint {
+    font-size: .8rem;
+    color: var(--muted);
+    margin-top: 6px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .size-hint a { color: var(--coral); text-decoration: none; }
+  .size-hint a:hover { text-decoration: underline; }
+
+  /* Submit */
+  .submit-btn {
+    width: 100%;
+    padding: 16px;
+    background: var(--coral);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+    cursor: pointer;
+    transition: background .2s, transform .15s;
+    margin-top: 8px;
+  }
+  .submit-btn:hover { background: #c05a42; }
+  .submit-btn:active { transform: scale(.98); }
+
+  /* Success */
+  .success-box {
+    display: none;
+    text-align: center;
+    padding: 48px 24px;
+  }
+  .success-box .icon { font-size: 3rem; margin-bottom: 16px; }
+  .success-box h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  .success-box p { color: var(--muted); line-height: 1.7; }
+
+  /* Back link */
+  .back-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: .88rem;
+    font-weight: 500;
+    margin-bottom: 32px;
+    transition: color .2s;
+  }
+  .back-link:hover { color: var(--coral); }
+  .back-link svg { width: 16px; height: 16px; }
+
+  /* Footer */
+  .page-footer {
+    text-align: center;
+    padding: 32px 24px;
+    border-top: 1px solid var(--border);
+    font-size: .82rem;
+    color: var(--muted);
+  }
+  .page-footer a { color: var(--coral); text-decoration: none; }
+
+  @media (max-width: 480px) {
+    .form-card { padding: 24px 18px; }
+    .radio-group { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="page-header">
+  <span class="eyebrow">Lớp A1 · THPT Tân An · Niên khóa 1993–1996</span>
+  <h1>Đăng ký <em>size áo</em><br>họp lớp 30 năm</h1>
+  <p>Vui lòng điền đầy đủ thông tin để ban tổ chức chuẩn bị áo đồng phục cho buổi họp mặt kỷ niệm 30 năm ra trường.</p>
+</header>
+
+<div class="container">
+  <a href="index.html" class="back-link">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Về trang chính
+  </a>
+
+  <!-- Size chart -->
+  <div class="size-info">
+    <h3>Bảng quy đổi size áo</h3>
+    <div class="size-tabs">
+      <button class="size-tab active" onclick="showSizeTable('nam')">Nam</button>
+      <button class="size-tab" onclick="showSizeTable('nu')">Nữ</button>
+    </div>
+
+    <table class="size-table visible" id="table-nam">
+      <thead><tr><th>Size</th><th>Ngực (cm)</th><th>Chiều cao (cm)</th><th>Cân nặng (kg)</th></tr></thead>
+      <tbody>
+        <tr><td><span class="size-badge">S</span></td><td>88 – 92</td><td>158 – 163</td><td>55 – 62</td></tr>
+        <tr><td><span class="size-badge">M</span></td><td>92 – 96</td><td>163 – 168</td><td>62 – 70</td></tr>
+        <tr><td><span class="size-badge">L</span></td><td>96 – 100</td><td>168 – 173</td><td>70 – 78</td></tr>
+        <tr><td><span class="size-badge">XL</span></td><td>100 – 106</td><td>173 – 178</td><td>78 – 88</td></tr>
+        <tr><td><span class="size-badge">2XL</span></td><td>106 – 112</td><td>178 – 183</td><td>88 – 98</td></tr>
+        <tr><td><span class="size-badge">3XL</span></td><td>112 – 118</td><td>183 – 188</td><td>98 – 110</td></tr>
+      </tbody>
+    </table>
+
+    <table class="size-table" id="table-nu">
+      <thead><tr><th>Size</th><th>Ngực (cm)</th><th>Chiều cao (cm)</th><th>Cân nặng (kg)</th></tr></thead>
+      <tbody>
+        <tr><td><span class="size-badge">S</span></td><td>80 – 84</td><td>152 – 157</td><td>44 – 50</td></tr>
+        <tr><td><span class="size-badge">M</span></td><td>84 – 88</td><td>157 – 162</td><td>50 – 56</td></tr>
+        <tr><td><span class="size-badge">L</span></td><td>88 – 93</td><td>162 – 166</td><td>56 – 63</td></tr>
+        <tr><td><span class="size-badge">XL</span></td><td>93 – 98</td><td>166 – 170</td><td>63 – 70</td></tr>
+        <tr><td><span class="size-badge">2XL</span></td><td>98 – 104</td><td>170 – 174</td><td>70 – 78</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Form -->
+  <div class="form-card">
+    <div class="form-title">📋 Phiếu đăng ký size áo</div>
+
+    <form id="reg-form" action="https://formsubmit.co/groupai3925@gmail.com" method="POST">
+      <!-- FormSubmit config -->
+      <input type="hidden" name="_subject" value="[Lớp A1] Đăng ký size áo họp lớp 30 năm" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_next" value="https://lopa1-tanan-9396.vercel.app/dang-ky-ao.html?success=1" />
+      <input type="hidden" name="_template" value="table" />
+
+      <!-- Họ tên -->
+      <div class="field">
+        <label>Họ và tên <span class="req">*</span></label>
+        <input type="text" name="Ho_va_ten" placeholder="Nguyễn Văn A" required />
+      </div>
+
+      <!-- Số điện thoại -->
+      <div class="field">
+        <label>Số điện thoại <span class="req">*</span></label>
+        <input type="tel" name="So_dien_thoai" placeholder="0901 234 567" required />
+      </div>
+
+      <!-- Giới tính -->
+      <div class="field">
+        <label>Giới tính <span class="req">*</span></label>
+        <div class="radio-group">
+          <label class="radio-label">
+            <input type="radio" name="Gioi_tinh" value="Nam" required onchange="toggleSize('nam')" />
+            <span class="gender-icon">👨</span>
+            <span class="gender-text">Nam</span>
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="Gioi_tinh" value="Nữ" onchange="toggleSize('nu')" />
+            <span class="gender-icon">👩</span>
+            <span class="gender-text">Nữ</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Size áo Nam -->
+      <div class="size-section" id="size-nam">
+        <div class="field">
+          <label>Size áo Nam <span class="req">*</span></label>
+          <div class="select-wrapper">
+            <select name="Size_ao_nam" id="sel-nam">
+              <option value="">— Chọn size áo —</option>
+              <option value="S (Ngực 88-92cm)">S — Ngực 88–92 cm</option>
+              <option value="M (Ngực 92-96cm)">M — Ngực 92–96 cm</option>
+              <option value="L (Ngực 96-100cm)">L — Ngực 96–100 cm</option>
+              <option value="XL (Ngực 100-106cm)">XL — Ngực 100–106 cm</option>
+              <option value="2XL (Ngực 106-112cm)">2XL — Ngực 106–112 cm</option>
+              <option value="3XL (Ngực 112-118cm)">3XL — Ngực 112–118 cm</option>
+            </select>
+          </div>
+          <p class="size-hint">💡 Tham khảo bảng size bên trên để chọn đúng nhất.</p>
+        </div>
+      </div>
+
+      <!-- Size áo Nữ -->
+      <div class="size-section" id="size-nu">
+        <div class="field">
+          <label>Size áo Nữ <span class="req">*</span></label>
+          <div class="select-wrapper">
+            <select name="Size_ao_nu" id="sel-nu">
+              <option value="">— Chọn size áo —</option>
+              <option value="S (Ngực 80-84cm)">S — Ngực 80–84 cm</option>
+              <option value="M (Ngực 84-88cm)">M — Ngực 84–88 cm</option>
+              <option value="L (Ngực 88-93cm)">L — Ngực 88–93 cm</option>
+              <option value="XL (Ngực 93-98cm)">XL — Ngực 93–98 cm</option>
+              <option value="2XL (Ngực 98-104cm)">2XL — Ngực 98–104 cm</option>
+            </select>
+          </div>
+          <p class="size-hint">💡 Tham khảo bảng size bên trên để chọn đúng nhất.</p>
+        </div>
+      </div>
+
+      <!-- Ghi chú -->
+      <div class="field">
+        <label>Ghi chú (nếu có)</label>
+        <textarea name="Ghi_chu" placeholder="Ví dụ: mặc áo cỡ M nhưng hơi to, muốn chọn S; hoặc yêu cầu đặc biệt..."></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">
+        ✅ &nbsp;Gửi đăng ký
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="page-footer">
+  <p>© Lớp A1 · THPT Tân An, Long An · Niên khóa 1993–1996 &nbsp;·&nbsp; <a href="index.html">Về trang chính</a></p>
+</footer>
+
+<script>
+  // Toggle size table
+  function showSizeTable(gender) {
+    document.querySelectorAll('.size-table').forEach(t => t.classList.remove('visible'));
+    document.querySelectorAll('.size-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('table-' + gender).classList.add('visible');
+    event.target.classList.add('active');
+  }
+
+  // Toggle size dropdown based on gender
+  function toggleSize(gender) {
+    const namSec = document.getElementById('size-nam');
+    const nuSec  = document.getElementById('size-nu');
+    const selNam = document.getElementById('sel-nam');
+    const selNu  = document.getElementById('sel-nu');
+
+    if (gender === 'nam') {
+      namSec.classList.add('visible');
+      nuSec.classList.remove('visible');
+      selNam.required = true;
+      selNu.required  = false;
+      selNu.value = '';
+      showSizeTabByName('nam');
+    } else {
+      nuSec.classList.add('visible');
+      namSec.classList.remove('visible');
+      selNu.required  = true;
+      selNam.required = false;
+      selNam.value = '';
+      showSizeTabByName('nu');
+    }
+  }
+
+  function showSizeTabByName(gender) {
+    document.querySelectorAll('.size-table').forEach(t => t.classList.remove('visible'));
+    document.querySelectorAll('.size-tab').forEach((t, i) => {
+      t.classList.toggle('active', (gender === 'nam' && i === 0) || (gender === 'nu' && i === 1));
+    });
+    document.getElementById('table-' + gender).classList.add('visible');
+  }
+
+  // Show success message if redirected back with ?success=1
+  if (new URLSearchParams(location.search).get('success') === '1') {
+    document.getElementById('reg-form').style.display = 'none';
+    const box = document.createElement('div');
+    box.className = 'success-box';
+    box.style.display = 'block';
+    box.innerHTML = `
+      <div class="icon">🎉</div>
+      <h2>Đăng ký thành công!</h2>
+      <p>Cảm ơn bạn đã đăng ký.<br>Ban tổ chức sẽ tổng hợp và liên hệ xác nhận trước buổi họp mặt.<br><br>
+      <a href="index.html" style="color:var(--coral);font-weight:600;">← Về trang chính</a></p>`;
+    document.querySelector('.form-card').appendChild(box);
+    document.querySelector('.form-title').style.display = 'none';
+  }
+</script>
+</body>
+</html>
