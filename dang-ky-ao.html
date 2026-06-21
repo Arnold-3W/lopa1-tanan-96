@@ -490,13 +490,9 @@
     };
 
     try {
-      const formData = new URLSearchParams();
-      Object.entries(payload).forEach(([k, v]) => formData.append(k, v));
-      await fetch(GAS_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: formData
-      });
+      const url = new URL(GAS_URL);
+      Object.entries(payload).forEach(([k, v]) => url.searchParams.append(k, v));
+      await fetch(url.toString(), { mode: 'no-cors' });
       // Hiện thông báo thành công
       document.getElementById('reg-form').style.display = 'none';
       document.querySelector('.form-title').style.display = 'none';
