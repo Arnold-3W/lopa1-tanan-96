@@ -260,6 +260,22 @@
   .photo:hover::before{opacity:1}
   .photo:hover .cap{opacity:1;transform:translateY(0)}
   .photo:hover img{transform:scale(1.05);filter:brightness(1.05)}
+  .gallery-cat{
+    column-span:all;
+    margin:40px 0 18px;
+    display:flex;align-items:center;gap:16px;
+  }
+  .gallery-cat:first-child{margin-top:0}
+  .gallery-cat::before,.gallery-cat::after{
+    content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(192,138,62,.35),transparent);
+  }
+  .gallery-cat span{
+    font-family:'Playfair Display',serif;
+    font-size:15px;letter-spacing:2.5px;text-transform:uppercase;
+    color:var(--coral,#d96f56);white-space:nowrap;
+    padding:4px 12px;border:1px solid rgba(192,138,62,.25);border-radius:20px;
+    background:rgba(253,246,236,.7);
+  }
 
   /* ===== VIDEO ===== */
   .videosec{background:linear-gradient(180deg,#fdeed2,#fff9ef)}
@@ -490,31 +506,48 @@
 
     <div class="gallery-wrap reveal">
       <div class="gallery" id="gallery">
-        <div class="photo"><img src="Hinh ve truong 20 nam.jpg" loading="lazy" alt="20 năm về trường · THPT Tân An"/><div class="cap">A1 · 20 năm về trường</div></div>
-        <div class="photo"><img src="viber_image_2026-01-16_19-41-02-409.jpg" loading="lazy" alt=""/><div class="cap">A1 · Ký ức</div></div>
-        <div class="photo"><img src="viber_image_2026-01-16_20-02-29-273.jpg" loading="lazy" alt=""/><div class="cap">A1 · Hội ngộ</div></div>
-        <div class="photo"><img src="viber_image_2026-01-24_08-55-45-329.jpg" loading="lazy" alt=""/><div class="cap">A1 · Một thời</div></div>
-        <div class="photo"><img src="viber_image_2026-01-24_11-35-26-340.jpg" loading="lazy" alt=""/><div class="cap">A1 · Bạn bè</div></div>
-        <div class="photo"><img src="viber_image_2026-03-13_13-34-18-383.jpg" loading="lazy" alt=""/><div class="cap">A1 · Khoảnh khắc</div></div>
-        <div class="photo"><img src="viber_image_2026-03-13_17-59-12-206.jpg" loading="lazy" alt=""/><div class="cap">A1 · Mãi mãi</div></div>
-        <div class="photo"><img src="viber_image_2026-03-27_17-19-54-860.jpg" loading="lazy" alt=""/><div class="cap">A1 · Tình thân</div></div>
-        <div class="photo"><img src="viber_image_2026-03-27_17-43-04-028.jpg" loading="lazy" alt=""/><div class="cap">A1 · Sum vầy</div></div>
-        <div class="photo"><img src="viber_image_2026-03-27_21-53-41-158.jpg" loading="lazy" alt=""/><div class="cap">A1 · Đêm hội</div></div>
-        <div class="photo"><img src="viber_image_2026-03-28_08-14-50-924.jpg" loading="lazy" alt=""/><div class="cap">A1 · Ban mai</div></div>
-        <div class="photo"><img src="viber_image_2026-03-29_19-23-42-081.jpg" loading="lazy" alt=""/><div class="cap">A1 · Ấm áp</div></div>
-        <div class="photo"><img src="viber_image_2026-03-29_19-23-42-243.jpg" loading="lazy" alt=""/><div class="cap">A1 · Nụ cười</div></div>
-        <div class="photo"><img src="viber_image_2026-04-09_10-30-22-941.jpg" loading="lazy" alt=""/><div class="cap">A1 · Tháng tư</div></div>
-        <div class="photo"><img src="viber_image_2026-04-13_22-05-52-468.jpg" loading="lazy" alt=""/><div class="cap">A1 · Đêm về</div></div>
-        <div class="photo"><img src="viber_image_2026-04-24_19-44-50-321.jpg" loading="lazy" alt=""/><div class="cap">A1 · Bên nhau</div></div>
-        <div class="photo"><img src="viber_image_2026-04-25_21-25-41-644.jpg" loading="lazy" alt=""/><div class="cap">A1 · Hội ngộ</div></div>
-        <div class="photo"><img src="viber_image_2026-04-25_21-31-00-926.jpg" loading="lazy" alt=""/><div class="cap">A1 · Vui vầy</div></div>
-        <div class="photo"><img src="viber_image_2026-05-02_11-03-56-631.jpg" loading="lazy" alt=""/><div class="cap">A1 · Sáng tháng năm</div></div>
-        <div class="photo"><img src="viber_image_2026-05-22_20-05-43-737.jpg" loading="lazy" alt=""/><div class="cap">A1 · Kỷ niệm</div></div>
-        <div class="photo"><img src="viber_image_2026-05-29_19-47-40-172.jpg" loading="lazy" alt=""/><div class="cap">A1 · Đoàn viên</div></div>
-        <div class="photo"><img src="viber_image_2026-05-30_16-20-40-635.jpg" loading="lazy" alt=""/><div class="cap">A1 · Chiều hè</div></div>
-        <div class="photo"><img src="viber_image_2026-05-30_17-00-04-350.jpg" loading="lazy" alt=""/><div class="cap">A1 · Hoàng hôn</div></div>
-        <div class="photo"><img src="viber_image_2026-06-02_17-57-08-187.jpg" loading="lazy" alt=""/><div class="cap">A1 · Tháng sáu</div></div>
-        <div class="photo"><img src="viber_image_2026-06-04_09-01-01-540.jpg" loading="lazy" alt=""/><div class="cap">A1 · Nắng mai</div></div>
+
+        <!-- 1. KÝ ỨC HỌC TRÒ -->
+        <div class="gallery-cat"><span>Ký Ức Học Trò</span></div>
+        <div class="photo"><img src="viber_image_2026-06-02_17-57-08-187.jpg" loading="lazy" alt="Học sinh THPT Tân An những năm 1990s"/><div class="cap">Tuổi học trò · THPT Tân An</div></div>
+        <div class="photo"><img src="viber_image_2026-04-25_21-31-00-926.jpg" loading="lazy" alt="Hội bạn A1 ngày trẻ"/><div class="cap">Thanh xuân rực rỡ · Ngày xưa ơi</div></div>
+        <div class="photo"><img src="viber_image_2026-05-30_16-20-40-635.jpg" loading="lazy" alt="Tiệc nhà xưa, tụ họp A1"/><div class="cap">Bữa tiệc nhà · Những ngày đầu</div></div>
+
+        <!-- 2. KẾT NỐI QUA NĂM THÁNG -->
+        <div class="gallery-cat"><span>Kết Nối Qua Năm Tháng</span></div>
+        <div class="photo"><img src="viber_image_2026-05-02_11-03-56-631.jpg" loading="lazy" alt="Họp mặt gia đình A1 ngày xưa"/><div class="cap">Cùng gia đình · Gặp nhau lại</div></div>
+        <div class="photo"><img src="viber_image_2026-05-30_17-00-04-350.jpg" loading="lazy" alt="Gặp mặt tại nhà vườn"/><div class="cap">Nhà vườn · Bình yên sum vầy</div></div>
+        <div class="photo"><img src="viber_image_2026-04-25_21-25-41-644.jpg" loading="lazy" alt="Đám cưới bạn A1"/><div class="cap">Ngày cưới · Hạnh phúc A1</div></div>
+
+        <!-- 3. VỀ TRƯỜNG · 30 NĂM -->
+        <div class="gallery-cat"><span>Về Trường · 30 Năm</span></div>
+        <div class="photo"><img src="viber_image_2026-05-29_19-47-40-172.jpg" loading="lazy" alt="Poster 30 Năm Trạm Thanh Xuân K96"/><div class="cap">30 Năm Trạm Thanh Xuân · K96</div></div>
+        <div class="photo"><img src="viber_image_2026-06-04_09-01-01-540.jpg" loading="lazy" alt="20 năm về trường THPT Tân An"/><div class="cap">20 Năm Về Trường · THPT Tân An</div></div>
+        <div class="photo"><img src="Hinh ve truong 20 nam.jpg" loading="lazy" alt="A1 chụp ảnh kỷ niệm 20 năm về trường"/><div class="cap">A1 · Tập thể 20 năm hội ngộ</div></div>
+
+        <!-- 4. SINH NHẬT & CÀ PHÊ -->
+        <div class="gallery-cat"><span>Sinh Nhật &amp; Cà Phê</span></div>
+        <div class="photo"><img src="viber_image_2026-03-13_13-34-18-383.jpg" loading="lazy" alt="Happy Birthday Tháng 3 cùng A1"/><div class="cap">Happy Birthday Tháng 3 · A1</div></div>
+        <div class="photo"><img src="viber_image_2026-03-13_17-59-12-206.jpg" loading="lazy" alt="Thổi nến sinh nhật, tiệc nhỏ A1"/><div class="cap">Thổi nến · Kỷ niệm sinh nhật</div></div>
+        <div class="photo"><img src="viber_image_2026-01-24_08-55-45-329.jpg" loading="lazy" alt="Cà phê sáng đầu năm cùng A1"/><div class="cap">Cà phê sáng · Đầu năm mới</div></div>
+        <div class="photo"><img src="viber_image_2026-01-24_11-35-26-340.jpg" loading="lazy" alt="Tiệc trưa Vô Cực Sơn Trà, Đà Nẵng"/><div class="cap">Vô Cực Sơn Trà · Đà Nẵng</div></div>
+
+        <!-- 5. BỮA TIỆC HỘI NGỘ -->
+        <div class="gallery-cat"><span>Bữa Tiệc Hội Ngộ</span></div>
+        <div class="photo"><img src="viber_image_2026-01-16_19-41-02-409.jpg" loading="lazy" alt="Hội ngộ A1 đêm đầu năm"/><div class="cap">Đêm đầu năm · Quây quần A1</div></div>
+        <div class="photo"><img src="viber_image_2026-01-16_20-02-29-273.jpg" loading="lazy" alt="Tiệc chị em A1 đêm vui"/><div class="cap">Tiệc chị em · Nụ cười rạng rỡ</div></div>
+        <div class="photo"><img src="viber_image_2026-03-29_19-23-42-081.jpg" loading="lazy" alt="Tiệc tối vườn xanh cùng A1"/><div class="cap">Tiệc vườn · Đêm xuân ấm áp</div></div>
+        <div class="photo"><img src="viber_image_2026-04-09_10-30-22-941.jpg" loading="lazy" alt="Nhậu bia hơi phố đêm tháng tư"/><div class="cap">Bia hơi phố đêm · Tháng Tư</div></div>
+        <div class="photo"><img src="viber_image_2026-03-27_21-53-41-158.jpg" loading="lazy" alt="Chụp ảnh phố đêm lễ hội Tết"/><div class="cap">Phố đêm lễ hội · Tết Bính Ngọ</div></div>
+
+        <!-- 6. ROOFTOP · THÀNH PHỐ VỀ ĐÊM -->
+        <div class="gallery-cat"><span>Rooftop · Thành Phố Về Đêm</span></div>
+        <div class="photo"><img src="viber_image_2026-03-27_17-19-54-860.jpg" loading="lazy" alt="Tiệc rooftop hoàng hôn Sài Gòn"/><div class="cap">Hoàng hôn rooftop · Sài Gòn</div></div>
+        <div class="photo"><img src="viber_image_2026-03-28_08-14-50-924.jpg" loading="lazy" alt="Đêm rooftop, đại hội A1 đông đủ"/><div class="cap">Đêm rooftop · Đại hội A1</div></div>
+        <div class="photo"><img src="viber_image_2026-04-13_22-05-52-468.jpg" loading="lazy" alt="Skybar nhìn ra Sài Gòn về đêm"/><div class="cap">Skybar · Sài Gòn lung linh</div></div>
+        <div class="photo"><img src="viber_image_2026-04-24_19-44-50-321.jpg" loading="lazy" alt="Rooftop ánh nến giữa lòng thành phố"/><div class="cap">Rooftop · Ánh nến thành phố</div></div>
+        <div class="photo"><img src="viber_image_2026-05-22_20-05-43-737.jpg" loading="lazy" alt="Tiệc rooftop bên sông đêm Đà Nẵng"/><div class="cap">Rooftop bên sông · Đà Nẵng</div></div>
+
       </div>
     </div>
   </div>
