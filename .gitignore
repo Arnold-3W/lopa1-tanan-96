@@ -7,6 +7,8 @@ Video/
 # File tam cua ffmpeg khi nen 2-pass
 ffmpeg2pass-*.log
 ffmpeg2pass-*.log.mbtree
+ffmpeg2pass-*.log.mbtree.temp
+ffmpeg2pass-*.log.temp
 *.log.mbtree
 
 # OS files
