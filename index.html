@@ -393,27 +393,32 @@
 
 
   /* ===== ALBUM (thư viện ảnh theo bối cảnh) ===== */
-  .album-sec{background:linear-gradient(180deg,#fff9ef,#fdeed2)}
-  .chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:0 auto 44px;max-width:980px}
-  .chip{
-    font-family:inherit;cursor:pointer;
-    padding:9px 20px;border-radius:999px;
-    border:1px solid rgba(192,138,62,.35);background:rgba(255,255,255,.7);
-    color:var(--ink-soft);font-size:13px;letter-spacing:1px;font-weight:500;
-    transition:all .25s;
-  }
-  .chip:hover{border-color:var(--coral);color:var(--coral)}
-  .chip.active{background:var(--coral);border-color:var(--coral);color:#fff;box-shadow:0 10px 24px -12px rgba(217,111,86,.7)}
-  .chip small{opacity:.7;margin-left:6px;font-size:11px}
-  .album-block{margin-bottom:64px}
-  .album-block.hide{display:none}
-  .album-title{display:flex;align-items:baseline;justify-content:center;gap:14px;margin-bottom:26px;flex-wrap:wrap}
-  .album-title h3{font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(24px,3vw,34px);color:var(--ink)}
-  .album-title span{color:var(--gold);font-size:12px;letter-spacing:3px;text-transform:uppercase;font-weight:600}
-  .album-grid{columns:3;column-gap:18px}
-  @media (max-width:900px){.album-grid{columns:2}}
-  @media (max-width:520px){.album-grid{columns:1}}
-  .album-grid .photo{margin-bottom:18px}
+  /* ===== CHRONICLE: một dòng thời gian duy nhất ===== */
+  .era-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:36px auto 6px;max-width:1100px;position:sticky;top:64px;z-index:20;padding:10px 8px;background:linear-gradient(180deg,rgba(255,249,239,.97),rgba(255,249,239,.85));backdrop-filter:blur(8px);border-radius:14px}
+  .era-link{display:inline-flex;align-items:center;gap:7px;padding:6px 13px;border:1px solid rgba(192,138,62,.3);border-radius:999px;font-size:12.5px;color:var(--ink-soft,#6b5a48);text-decoration:none;background:#fffdf8;transition:all .25s}
+  .era-link b{font-family:'Playfair Display',serif;font-weight:600;color:var(--coral,#d96f56)}
+  .era-link:hover,.era-link.on{border-color:var(--coral,#d96f56);color:var(--coral,#d96f56);transform:translateY(-1px)}
+  .era-link.on{background:var(--coral,#d96f56);color:#fff}.era-link.on b{color:#fff}
+  .chronicle{position:relative;max-width:1180px;margin:30px auto 0;padding-left:56px}
+  .chronicle::before{content:"";position:absolute;left:19px;top:14px;bottom:0;width:2px;background:linear-gradient(to bottom,var(--coral,#d96f56),rgba(192,138,62,.4) 60%,rgba(192,138,62,.12))}
+  .chapter{position:relative;margin-bottom:72px;scroll-margin-top:140px}
+  .chapter::before{content:"";position:absolute;left:-44px;top:20px;width:14px;height:14px;border-radius:50%;background:#fff9ef;border:3px solid var(--coral,#d96f56);box-shadow:0 0 0 6px rgba(217,111,86,.12)}
+  .ch-head{display:flex;align-items:flex-start;gap:20px;margin-bottom:26px;padding-bottom:18px;border-bottom:1px solid rgba(192,138,62,.25)}
+  .ch-no{font-family:'Playfair Display',serif;font-size:clamp(40px,5vw,60px);line-height:.9;color:rgba(217,111,86,.85);font-weight:500;min-width:72px}
+  .ch-text{flex:1}
+  .ch-era{display:inline-block;font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:600;color:var(--gold,#c08a3e);margin-bottom:4px}
+  .ch-text h3{font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(24px,3vw,34px);color:var(--ink,#2a1f14);line-height:1.2}
+  .ch-text p{margin-top:6px;color:var(--ink-soft,#6b5a48);font-size:15px;max-width:640px}
+  .ch-count{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gold,#c08a3e);font-weight:600;white-space:nowrap;padding-top:8px}
+  .chapter .gallery{columns:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .chapter .gallery.n1{grid-template-columns:minmax(0,560px)}
+  .chapter .gallery.n2{grid-template-columns:repeat(2,1fr);max-width:780px}
+  .chapter .photo{margin:0;break-inside:auto}
+  .chapter .photo img{aspect-ratio:4/3;object-fit:cover;object-position:center 30%;height:auto}
+  .chapter .gallery.n1 .photo img{aspect-ratio:auto}
+  @media (max-width:900px){.chapter .gallery{grid-template-columns:repeat(2,1fr)}.chapter .gallery.n1{grid-template-columns:minmax(0,560px)}}
+  @media (max-width:560px){.chronicle{padding-left:34px}.chronicle::before{left:9px}.chapter::before{left:-32px}.chapter .gallery,.chapter .gallery.n2{grid-template-columns:1fr}.ch-head{flex-wrap:wrap;gap:8px}.era-nav{position:static}.ch-count{padding-top:0}}
+  .lightbox .lb-cap{position:absolute;top:22px;left:50%;transform:translateX(-50%);color:rgba(255,249,239,.9);font-size:13px;letter-spacing:2px;text-transform:uppercase;text-align:center;max-width:80vw}
 
   /* ===== VIDEO LIBRARY ===== */
   .vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:10px}
@@ -488,7 +493,6 @@
     <ul>
       <li><a href="#story">Câu chuyện</a></li>
       <li><a href="#gallery">Khoảnh khắc</a></li>
-      <li><a href="#album">Album</a></li>
       <li><a href="#video">Thước phim</a></li>
       <li><a href="#timeline">Hành trình</a></li>
       <li><a href="#values">Tình bạn</a></li>
@@ -582,172 +586,178 @@
   <div class="container">
     <div class="section-head reveal">
       <span class="section-eyebrow">Khoảnh khắc</span>
-      <h2>Những <em>khung hình</em> không bao giờ cũ</h2>
-      <p class="section-sub">Mỗi tấm ảnh là một câu chuyện. Mỗi nụ cười là một lời nhắc nhớ — chúng ta đã, đang, và sẽ luôn bên nhau.</p>
+      <h2>Từ <em>thuở áo trắng</em> đến hôm nay</h2>
+      <p class="section-sub">Hành trình ba thập kỷ của Lớp A1 trong một dòng thời gian — từ ký ức học trò, những lần trở về mái trường, đến các cuộc hội ngộ gần đây. Chạm vào ảnh để xem phóng to, dùng phím mũi tên để chuyển ảnh.</p>
     </div>
+    <nav class="era-nav" aria-label="Các chặng thời gian"><a href="#ch-I" class="era-link"><b>I</b><span>Thuở áo trắng</span></a><a href="#ch-II" class="era-link"><b>II</b><span>Trưởng thành</span></a><a href="#ch-III" class="era-link"><b>III</b><span>20 năm về trường</span></a><a href="#ch-IV" class="era-link"><b>IV</b><span>Lời mời 30 năm</span></a><a href="#ch-V" class="era-link"><b>V</b><span>Ngày gặp lại</span></a><a href="#ch-VI" class="era-link"><b>VI</b><span>Đồng phục</span></a><a href="#ch-VII" class="era-link"><b>VII</b><span>Cùng nhau trên đường</span></a><a href="#ch-VIII" class="era-link"><b>VIII</b><span>Sinh nhật &amp; tiệc vui</span></a><a href="#ch-IX" class="era-link"><b>IX</b><span>Hôm nay</span></a></nav>
+    <div class="chronicle" id="chronicle">
 
-    <div class="gallery-wrap reveal">
-      <div class="gallery" id="gallery">
+        <article class="chapter reveal" id="ch-I">
+          <header class="ch-head">
+            <div class="ch-no">I</div>
+            <div class="ch-text"><span class="ch-era">Thập niên 90</span><h3>Thuở áo trắng</h3><p>Những ngày đầu ở mái trường Tân An — lễ chào cờ, sân trường và tuổi học trò.</p></div>
+            <span class="ch-count">4 ảnh</span>
+          </header>
+          <div class="gallery n3">
+            <figure class="photo"><img src="Le chao co nam 1996.jpg" loading="lazy" alt="Lễ chào cờ ngày 20/11/1996 · THPT Tân An"/><div class="cap">Lễ 20/11/1996 · Ngày Nhà Giáo</div></figure>
+            <figure class="photo"><img src="viber_image_2026-06-02_17-57-08-187.jpg" loading="lazy" alt="Học sinh THPT Tân An những năm 1990s"/><div class="cap">Tuổi học trò · THPT Tân An</div></figure>
+            <figure class="photo"><img src="viber_image_2026-04-25_21-31-00-926.jpg" loading="lazy" alt="Hội bạn A1 ngày trẻ"/><div class="cap">Thanh xuân rực rỡ · Ngày xưa ơi</div></figure>
+            <figure class="photo"><img src="viber_image_2026-05-30_16-20-40-635.jpg" loading="lazy" alt="Tiệc nhà xưa, tụ họp A1"/><div class="cap">Bữa tiệc nhà · Những ngày đầu</div></figure>
+          </div>
+        </article>
 
-        <!-- 1. KÝ ỨC HỌC TRÒ -->
-        <div class="gallery-cat"><span>Ký Ức Học Trò</span></div>
-        <div class="photo"><img src="Le chao co nam 1996.jpg" loading="lazy" alt="Lễ chào cờ ngày 20/11/1996 · THPT Tân An"/><div class="cap">Lễ 20/11/1996 · Ngày Nhà Giáo</div></div>
-        <div class="photo"><img src="viber_image_2026-06-02_17-57-08-187.jpg" loading="lazy" alt="Học sinh THPT Tân An những năm 1990s"/><div class="cap">Tuổi học trò · THPT Tân An</div></div>
-        <div class="photo"><img src="viber_image_2026-04-25_21-31-00-926.jpg" loading="lazy" alt="Hội bạn A1 ngày trẻ"/><div class="cap">Thanh xuân rực rỡ · Ngày xưa ơi</div></div>
-        <div class="photo"><img src="viber_image_2026-05-30_16-20-40-635.jpg" loading="lazy" alt="Tiệc nhà xưa, tụ họp A1"/><div class="cap">Bữa tiệc nhà · Những ngày đầu</div></div>
+        <article class="chapter reveal" id="ch-II">
+          <header class="ch-head">
+            <div class="ch-no">II</div>
+            <div class="ch-text"><span class="ch-era">Năm tháng trưởng thành</span><h3>Mỗi người một ngả, một lòng gặp lại</h3><p>Gia đình, nhà vườn, đám cưới — A1 vẫn có mặt trong những dịp trọng đại của nhau.</p></div>
+            <span class="ch-count">3 ảnh</span>
+          </header>
+          <div class="gallery n3">
+            <figure class="photo"><img src="viber_image_2026-05-02_11-03-56-631.jpg" loading="lazy" alt="Họp mặt gia đình A1 ngày xưa"/><div class="cap">Cùng gia đình · Gặp nhau lại</div></figure>
+            <figure class="photo"><img src="viber_image_2026-05-30_17-00-04-350.jpg" loading="lazy" alt="Gặp mặt tại nhà vườn"/><div class="cap">Nhà vườn · Bình yên sum vầy</div></figure>
+            <figure class="photo"><img src="viber_image_2026-04-25_21-25-41-644.jpg" loading="lazy" alt="Đám cưới bạn A1"/><div class="cap">Ngày cưới · Hạnh phúc A1</div></figure>
+          </div>
+        </article>
 
-        <!-- 2. KẾT NỐI QUA NĂM THÁNG -->
-        <div class="gallery-cat"><span>Kết Nối Qua Năm Tháng</span></div>
-        <div class="photo"><img src="viber_image_2026-05-02_11-03-56-631.jpg" loading="lazy" alt="Họp mặt gia đình A1 ngày xưa"/><div class="cap">Cùng gia đình · Gặp nhau lại</div></div>
-        <div class="photo"><img src="viber_image_2026-05-30_17-00-04-350.jpg" loading="lazy" alt="Gặp mặt tại nhà vườn"/><div class="cap">Nhà vườn · Bình yên sum vầy</div></div>
-        <div class="photo"><img src="viber_image_2026-04-25_21-25-41-644.jpg" loading="lazy" alt="Đám cưới bạn A1"/><div class="cap">Ngày cưới · Hạnh phúc A1</div></div>
+        <article class="chapter reveal" id="ch-III">
+          <header class="ch-head">
+            <div class="ch-no">III</div>
+            <div class="ch-text"><span class="ch-era">20 năm sau ngày ra trường</span><h3>Trở về mái trường xưa</h3><p>Hai mươi năm sau, A1 cùng nhau trở lại sân trường chụp tấm ảnh tập thể.</p></div>
+            <span class="ch-count">2 ảnh</span>
+          </header>
+          <div class="gallery n2">
+            <figure class="photo"><img src="viber_image_2026-06-04_09-01-01-540.jpg" loading="lazy" alt="20 năm về trường THPT Tân An"/><div class="cap">20 Năm Về Trường · THPT Tân An</div></figure>
+            <figure class="photo"><img src="Hinh ve truong 20 nam.jpg" loading="lazy" alt="A1 chụp ảnh kỷ niệm 20 năm về trường"/><div class="cap">A1 · Tập thể 20 năm hội ngộ</div></figure>
+          </div>
+        </article>
 
-        <!-- 3. VỀ TRƯỜNG · 30 NĂM -->
-        <div class="gallery-cat"><span>Về Trường · 30 Năm</span></div>
-        <div class="photo"><img src="viber_image_2026-05-29_19-47-40-172.jpg" loading="lazy" alt="Poster 30 Năm Trạm Thanh Xuân K96"/><div class="cap">30 Năm Trạm Thanh Xuân · K96</div></div>
-        <div class="photo"><img src="viber_image_2026-06-04_09-01-01-540.jpg" loading="lazy" alt="20 năm về trường THPT Tân An"/><div class="cap">20 Năm Về Trường · THPT Tân An</div></div>
-        <div class="photo"><img src="Hinh ve truong 20 nam.jpg" loading="lazy" alt="A1 chụp ảnh kỷ niệm 20 năm về trường"/><div class="cap">A1 · Tập thể 20 năm hội ngộ</div></div>
+        <article class="chapter reveal" id="ch-IV">
+          <header class="ch-head">
+            <div class="ch-no">IV</div>
+            <div class="ch-text"><span class="ch-era">Cột mốc 30 năm</span><h3>Lời mời Trạm Thanh Xuân · K96</h3><p>Tấm thiệp, tấm poster mở đầu cho cuộc hội ngộ ba mươi năm.</p></div>
+            <span class="ch-count">6 ảnh</span>
+          </header>
+          <div class="gallery n3">
+            <figure class="photo"><img src="viber_image_2026-05-29_19-47-40-172.jpg" loading="lazy" alt="Poster 30 Năm Trạm Thanh Xuân K96"/><div class="cap">30 Năm Trạm Thanh Xuân · K96</div></figure>
+            <figure class="photo"><img src="album-thiep-01.jpg" width="1600" height="900" loading="lazy" alt="Thiệp mời Lớp A1 · 1"/><div class="cap">Thiệp Mời</div></figure>
+            <figure class="photo"><img src="album-thiep-02.jpg" width="1024" height="1536" loading="lazy" alt="Thiệp mời Lớp A1 · 2"/><div class="cap">Thiệp Mời</div></figure>
+            <figure class="photo"><img src="album-thiep-03.jpg" width="1600" height="900" loading="lazy" alt="Thiệp mời Lớp A1 · 3"/><div class="cap">Thiệp Mời</div></figure>
+            <figure class="photo"><img src="album-thiep-04.jpg" width="1228" height="819" loading="lazy" alt="Thiệp mời Lớp A1 · 4"/><div class="cap">Thiệp Mời</div></figure>
+            <figure class="photo"><img src="album-thiep-05.jpg" width="1228" height="819" loading="lazy" alt="Thiệp mời Lớp A1 · 5"/><div class="cap">Thiệp Mời</div></figure>
+          </div>
+        </article>
 
-        <!-- 4. SINH NHẬT & CÀ PHÊ -->
-        <div class="gallery-cat"><span>Sinh Nhật &amp; Cà Phê</span></div>
-        <div class="photo"><img src="viber_image_2026-03-13_13-34-18-383.jpg" loading="lazy" alt="Happy Birthday Tháng 3 cùng A1"/><div class="cap">Happy Birthday Tháng 3 · A1</div></div>
-        <div class="photo"><img src="viber_image_2026-03-13_17-59-12-206.jpg" loading="lazy" alt="Thổi nến sinh nhật, tiệc nhỏ A1"/><div class="cap">Thổi nến · Kỷ niệm sinh nhật</div></div>
-        <div class="photo"><img src="viber_image_2026-01-24_08-55-45-329.jpg" loading="lazy" alt="Cà phê sáng đầu năm cùng A1"/><div class="cap">Cà phê sáng · Đầu năm mới</div></div>
-        <div class="photo"><img src="viber_image_2026-01-24_11-35-26-340.jpg" loading="lazy" alt="Tiệc trưa Vô Cực Sơn Trà, Đà Nẵng"/><div class="cap">Vô Cực Sơn Trà · Đà Nẵng</div></div>
+        <article class="chapter reveal" id="ch-V">
+          <header class="ch-head">
+            <div class="ch-no">V</div>
+            <div class="ch-text"><span class="ch-era">Ngày gặp lại</span><h3>Mái nhà chung & đêm hội ngộ</h3><p>Về lại mái nhà chung, đông đủ trong đêm gặp lại.</p></div>
+            <span class="ch-count">11 ảnh</span>
+          </header>
+          <div class="gallery n3">
+            <figure class="photo"><img src="album-mai-nha-01.jpg" width="1600" height="1200" loading="lazy" alt="Gặp mặt tại mái nhà chung · 1"/><div class="cap">Mái Nhà Chung</div></figure>
+            <figure class="photo"><img src="album-mai-nha-02.jpg" width="1600" height="900" loading="lazy" alt="Gặp mặt tại mái nhà chung · 2"/><div class="cap">Mái Nhà Chung</div></figure>
+            <figure class="photo"><img src="album-mai-nha-03.jpg" width="1600" height="900" loading="lazy" alt="Gặp mặt tại mái nhà chung · 3"/><div class="cap">Mái Nhà Chung</div></figure>
+            <figure class="photo"><img src="album-dem-hoi-ngo-01.jpg" width="1280" height="960" loading="lazy" alt="Đêm hội ngộ của Lớp A1 · 1"/><div class="cap">Đêm Hội Ngộ</div></figure>
+            <figure class="photo"><img src="album-dem-hoi-ngo-02.jpg" width="1280" height="960" loading="lazy" alt="Đêm hội ngộ của Lớp A1 · 2"/><div class="cap">Đêm Hội Ngộ</div></figure>
+            <figure class="photo"><img src="album-dem-hoi-ngo-03.jpg" width="1280" height="960" loading="lazy" alt="Đêm hội ngộ của Lớp A1 · 3"/><div class="cap">Đêm Hội Ngộ</div></figure>
+            <figure class="photo"><img src="album-dem-hoi-ngo-04.jpg" width="1280" height="960" loading="lazy" alt="Đêm hội ngộ của Lớp A1 · 4"/><div class="cap">Đêm Hội Ngộ</div></figure>
+            <figure class="photo"><img src="album-dem-hoi-ngo-05.jpg" width="1280" height="720" loading="lazy" alt="Đêm hội ngộ của Lớp A1 · 5"/><div class="cap">Đêm Hội Ngộ</div></figure>
+            <figure class="photo"><img src="album-dem-hoi-ngo-06.jpg" width="1280" height="960" loading="lazy" alt="Đêm hội ngộ của Lớp A1 · 6"/><div class="cap">Đêm Hội Ngộ</div></figure>
+            <figure class="photo"><img src="album-dem-hoi-ngo-07.jpg" width="1280" height="960" loading="lazy" alt="Đêm hội ngộ của Lớp A1 · 7"/><div class="cap">Đêm Hội Ngộ</div></figure>
+            <figure class="photo"><img src="album-dem-hoi-ngo-08.jpg" width="1280" height="960" loading="lazy" alt="Đêm hội ngộ của Lớp A1 · 8"/><div class="cap">Đêm Hội Ngộ</div></figure>
+          </div>
+        </article>
 
-        <!-- 5. BỮA TIỆC HỘI NGỘ -->
-        <div class="gallery-cat"><span>Bữa Tiệc Hội Ngộ</span></div>
-        <div class="photo"><img src="viber_image_2026-01-16_19-41-02-409.jpg" loading="lazy" alt="Hội ngộ A1 đêm đầu năm"/><div class="cap">Đêm đầu năm · Quây quần A1</div></div>
-        <div class="photo"><img src="viber_image_2026-01-16_20-02-29-273.jpg" loading="lazy" alt="Tiệc chị em A1 đêm vui"/><div class="cap">Tiệc chị em · Nụ cười rạng rỡ</div></div>
-        <div class="photo"><img src="viber_image_2026-03-29_19-23-42-081.jpg" loading="lazy" alt="Tiệc tối vườn xanh cùng A1"/><div class="cap">Tiệc vườn · Đêm xuân ấm áp</div></div>
-        <div class="photo"><img src="viber_image_2026-04-09_10-30-22-941.jpg" loading="lazy" alt="Nhậu bia hơi phố đêm tháng tư"/><div class="cap">Bia hơi phố đêm · Tháng Tư</div></div>
-        <div class="photo"><img src="viber_image_2026-03-27_21-53-41-158.jpg" loading="lazy" alt="Chụp ảnh phố đêm lễ hội Tết"/><div class="cap">Phố đêm lễ hội · Tết Bính Ngọ</div></div>
+        <article class="chapter reveal" id="ch-VI">
+          <header class="ch-head">
+            <div class="ch-no">VI</div>
+            <div class="ch-text"><span class="ch-era">Ngày gặp lại</span><h3>Sắc màu đồng phục</h3><p>Cùng một màu áo, cùng một tập thể.</p></div>
+            <span class="ch-count">10 ảnh</span>
+          </header>
+          <div class="gallery n3">
+            <figure class="photo"><img src="album-sac-mau-01.jpg" width="1280" height="960" loading="lazy" alt="Lớp A1 trong sắc áo đồng phục rực rỡ · 1"/><div class="cap">Sắc Màu Đồng Phục</div></figure>
+            <figure class="photo"><img src="album-sac-mau-02.jpg" width="1280" height="960" loading="lazy" alt="Lớp A1 trong sắc áo đồng phục rực rỡ · 2"/><div class="cap">Sắc Màu Đồng Phục</div></figure>
+            <figure class="photo"><img src="album-sac-mau-03.jpg" width="1280" height="960" loading="lazy" alt="Lớp A1 trong sắc áo đồng phục rực rỡ · 3"/><div class="cap">Sắc Màu Đồng Phục</div></figure>
+            <figure class="photo"><img src="album-sac-mau-04.jpg" width="1280" height="960" loading="lazy" alt="Lớp A1 trong sắc áo đồng phục rực rỡ · 4"/><div class="cap">Sắc Màu Đồng Phục</div></figure>
+            <figure class="photo"><img src="album-sac-mau-05.jpg" width="1280" height="960" loading="lazy" alt="Lớp A1 trong sắc áo đồng phục rực rỡ · 5"/><div class="cap">Sắc Màu Đồng Phục</div></figure>
+            <figure class="photo"><img src="album-sac-mau-06.jpg" width="960" height="1280" loading="lazy" alt="Lớp A1 trong sắc áo đồng phục rực rỡ · 6"/><div class="cap">Sắc Màu Đồng Phục</div></figure>
+            <figure class="photo"><img src="album-sac-mau-07.jpg" width="960" height="1280" loading="lazy" alt="Lớp A1 trong sắc áo đồng phục rực rỡ · 7"/><div class="cap">Sắc Màu Đồng Phục</div></figure>
+            <figure class="photo"><img src="album-sac-mau-08.jpg" width="960" height="1280" loading="lazy" alt="Lớp A1 trong sắc áo đồng phục rực rỡ · 8"/><div class="cap">Sắc Màu Đồng Phục</div></figure>
+            <figure class="photo"><img src="album-sac-mau-09.jpg" width="960" height="1280" loading="lazy" alt="Lớp A1 trong sắc áo đồng phục rực rỡ · 9"/><div class="cap">Sắc Màu Đồng Phục</div></figure>
+            <figure class="photo"><img src="album-sac-mau-10.jpg" width="1280" height="720" loading="lazy" alt="Lớp A1 trong sắc áo đồng phục rực rỡ · 10"/><div class="cap">Sắc Màu Đồng Phục</div></figure>
+          </div>
+        </article>
 
-        <!-- 6. ROOFTOP · THÀNH PHỐ VỀ ĐÊM -->
-        <div class="gallery-cat"><span>Rooftop · Thành Phố Về Đêm</span></div>
-        <div class="photo"><img src="viber_image_2026-03-27_17-19-54-860.jpg" loading="lazy" alt="Tiệc rooftop hoàng hôn Sài Gòn"/><div class="cap">Hoàng hôn rooftop · Sài Gòn</div></div>
-        <div class="photo"><img src="viber_image_2026-03-28_08-14-50-924.jpg" loading="lazy" alt="Đêm rooftop, đại hội A1 đông đủ"/><div class="cap">Đêm rooftop · Đại hội A1</div></div>
-        <div class="photo"><img src="viber_image_2026-04-13_22-05-52-468.jpg" loading="lazy" alt="Skybar nhìn ra Sài Gòn về đêm"/><div class="cap">Skybar · Sài Gòn lung linh</div></div>
-        <div class="photo"><img src="viber_image_2026-04-24_19-44-50-321.jpg" loading="lazy" alt="Rooftop ánh nến giữa lòng thành phố"/><div class="cap">Rooftop · Ánh nến thành phố</div></div>
-        <div class="photo"><img src="viber_image_2026-05-22_20-05-43-737.jpg" loading="lazy" alt="Tiệc rooftop bên sông đêm Đà Nẵng"/><div class="cap">Rooftop bên sông · Đà Nẵng</div></div>
+        <article class="chapter reveal" id="ch-VII">
+          <header class="ch-head">
+            <div class="ch-no">VII</div>
+            <div class="ch-text"><span class="ch-era">Cùng nhau</span><h3>Những chuyến đi & cung đường</h3><p>Những chuyến đi chung và khoảnh khắc dọc đường.</p></div>
+            <span class="ch-count">19 ảnh</span>
+          </header>
+          <div class="gallery n3">
+            <figure class="photo"><img src="album-chuyen-di-01.jpg" width="1280" height="720" loading="lazy" alt="Chuyến đi cùng Lớp A1 · 1"/><div class="cap">Những Chuyến Đi Cùng Nhau</div></figure>
+            <figure class="photo"><img src="album-chuyen-di-02.jpg" width="1280" height="960" loading="lazy" alt="Chuyến đi cùng Lớp A1 · 2"/><div class="cap">Những Chuyến Đi Cùng Nhau</div></figure>
+            <figure class="photo"><img src="album-chuyen-di-03.jpg" width="1280" height="720" loading="lazy" alt="Chuyến đi cùng Lớp A1 · 3"/><div class="cap">Những Chuyến Đi Cùng Nhau</div></figure>
+            <figure class="photo"><img src="album-chuyen-di-04.jpg" width="1280" height="720" loading="lazy" alt="Chuyến đi cùng Lớp A1 · 4"/><div class="cap">Những Chuyến Đi Cùng Nhau</div></figure>
+            <figure class="photo"><img src="album-chuyen-di-05.jpg" width="1280" height="960" loading="lazy" alt="Chuyến đi cùng Lớp A1 · 5"/><div class="cap">Những Chuyến Đi Cùng Nhau</div></figure>
+            <figure class="photo"><img src="album-chuyen-di-06.jpg" width="1280" height="960" loading="lazy" alt="Chuyến đi cùng Lớp A1 · 6"/><div class="cap">Những Chuyến Đi Cùng Nhau</div></figure>
+            <figure class="photo"><img src="album-chuyen-di-07.jpg" width="1280" height="960" loading="lazy" alt="Chuyến đi cùng Lớp A1 · 7"/><div class="cap">Những Chuyến Đi Cùng Nhau</div></figure>
+            <figure class="photo"><img src="album-chuyen-di-08.jpg" width="1280" height="960" loading="lazy" alt="Chuyến đi cùng Lớp A1 · 8"/><div class="cap">Những Chuyến Đi Cùng Nhau</div></figure>
+            <figure class="photo"><img src="album-chuyen-di-09.jpg" width="1280" height="853" loading="lazy" alt="Chuyến đi cùng Lớp A1 · 9"/><div class="cap">Những Chuyến Đi Cùng Nhau</div></figure>
+            <figure class="photo"><img src="album-chuyen-di-10.jpg" width="1280" height="960" loading="lazy" alt="Chuyến đi cùng Lớp A1 · 10"/><div class="cap">Những Chuyến Đi Cùng Nhau</div></figure>
+            <figure class="photo"><img src="album-chuyen-di-11.jpg" width="1280" height="960" loading="lazy" alt="Chuyến đi cùng Lớp A1 · 11"/><div class="cap">Những Chuyến Đi Cùng Nhau</div></figure>
+            <figure class="photo"><img src="album-chuyen-di-12.jpg" width="1280" height="960" loading="lazy" alt="Chuyến đi cùng Lớp A1 · 12"/><div class="cap">Những Chuyến Đi Cùng Nhau</div></figure>
+            <figure class="photo"><img src="album-tren-duong-01.jpg" width="960" height="1280" loading="lazy" alt="Trên đường cùng nhau · 1"/><div class="cap">Trên Đường Cùng Nhau</div></figure>
+            <figure class="photo"><img src="album-tren-duong-02.jpg" width="960" height="1280" loading="lazy" alt="Trên đường cùng nhau · 2"/><div class="cap">Trên Đường Cùng Nhau</div></figure>
+            <figure class="photo"><img src="album-tren-duong-03.jpg" width="1280" height="960" loading="lazy" alt="Trên đường cùng nhau · 3"/><div class="cap">Trên Đường Cùng Nhau</div></figure>
+            <figure class="photo"><img src="album-tren-duong-04.jpg" width="1280" height="960" loading="lazy" alt="Trên đường cùng nhau · 4"/><div class="cap">Trên Đường Cùng Nhau</div></figure>
+            <figure class="photo"><img src="album-tren-duong-05.jpg" width="1280" height="960" loading="lazy" alt="Trên đường cùng nhau · 5"/><div class="cap">Trên Đường Cùng Nhau</div></figure>
+            <figure class="photo"><img src="album-tren-duong-06.jpg" width="1280" height="960" loading="lazy" alt="Trên đường cùng nhau · 6"/><div class="cap">Trên Đường Cùng Nhau</div></figure>
+            <figure class="photo"><img src="album-tren-duong-07.jpg" width="1280" height="960" loading="lazy" alt="Trên đường cùng nhau · 7"/><div class="cap">Trên Đường Cùng Nhau</div></figure>
+          </div>
+        </article>
 
-      </div>
-    </div>
-  </div>
-</section>
+        <article class="chapter reveal" id="ch-VIII">
+          <header class="ch-head">
+            <div class="ch-no">VIII</div>
+            <div class="ch-text"><span class="ch-era">Cùng nhau</span><h3>Sinh nhật, quà tặng & tiệc vui</h3><p>Thổi nến, quà tặng yêu thương, tiệc vườn, phố đêm và bia hơi tháng Tư.</p></div>
+            <span class="ch-count">12 ảnh</span>
+          </header>
+          <div class="gallery n3">
+            <figure class="photo"><img src="album-sinh-nhat-01.jpg" width="1280" height="960" loading="lazy" alt="Sinh nhật và quà tặng yêu thương · 1"/><div class="cap">Sinh Nhật &amp; Quà Tặng Yêu Thương</div></figure>
+            <figure class="photo"><img src="album-sinh-nhat-02.jpg" width="1280" height="960" loading="lazy" alt="Sinh nhật và quà tặng yêu thương · 2"/><div class="cap">Sinh Nhật &amp; Quà Tặng Yêu Thương</div></figure>
+            <figure class="photo"><img src="album-sinh-nhat-03.jpg" width="1280" height="960" loading="lazy" alt="Sinh nhật và quà tặng yêu thương · 3"/><div class="cap">Sinh Nhật &amp; Quà Tặng Yêu Thương</div></figure>
+            <figure class="photo"><img src="album-sinh-nhat-04.jpg" width="1280" height="960" loading="lazy" alt="Sinh nhật và quà tặng yêu thương · 4"/><div class="cap">Sinh Nhật &amp; Quà Tặng Yêu Thương</div></figure>
+            <figure class="photo"><img src="album-sinh-nhat-05.jpg" width="960" height="1280" loading="lazy" alt="Sinh nhật và quà tặng yêu thương · 5"/><div class="cap">Sinh Nhật &amp; Quà Tặng Yêu Thương</div></figure>
+            <figure class="photo"><img src="album-sinh-nhat-06.jpg" width="960" height="1280" loading="lazy" alt="Sinh nhật và quà tặng yêu thương · 6"/><div class="cap">Sinh Nhật &amp; Quà Tặng Yêu Thương</div></figure>
+            <figure class="photo"><img src="album-sinh-nhat-07.jpg" width="1280" height="960" loading="lazy" alt="Sinh nhật và quà tặng yêu thương · 7"/><div class="cap">Sinh Nhật &amp; Quà Tặng Yêu Thương</div></figure>
+            <figure class="photo"><img src="viber_image_2026-03-13_13-34-18-383.jpg" loading="lazy" alt="Happy Birthday Tháng 3 cùng A1"/><div class="cap">Happy Birthday Tháng 3 · A1</div></figure>
+            <figure class="photo"><img src="viber_image_2026-03-13_17-59-12-206.jpg" loading="lazy" alt="Thổi nến sinh nhật, tiệc nhỏ A1"/><div class="cap">Thổi nến · Kỷ niệm sinh nhật</div></figure>
+            <figure class="photo"><img src="viber_image_2026-03-27_21-53-41-158.jpg" loading="lazy" alt="Chụp ảnh phố đêm lễ hội Tết"/><div class="cap">Phố đêm lễ hội · Tết Bính Ngọ</div></figure>
+            <figure class="photo"><img src="viber_image_2026-03-29_19-23-42-081.jpg" loading="lazy" alt="Tiệc tối vườn xanh cùng A1"/><div class="cap">Tiệc vườn · Đêm xuân ấm áp</div></figure>
+            <figure class="photo"><img src="viber_image_2026-04-09_10-30-22-941.jpg" loading="lazy" alt="Nhậu bia hơi phố đêm tháng tư"/><div class="cap">Bia hơi phố đêm · Tháng Tư</div></figure>
+          </div>
+        </article>
 
-<!-- ALBUM -->
-<section id="album" class="album-sec">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="section-eyebrow">Album hội ngộ</span>
-      <h2>Mỗi bối cảnh, <em>một khung hình</em> đẹp nhất</h2>
-      <p class="section-sub">Những khoảnh khắc được chọn lọc và sắp xếp theo từng chủ đề. Chạm vào ảnh để xem phóng to, dùng phím mũi tên để chuyển ảnh.</p>
-    </div>
-    <div class="chips" id="albumChips">
-      <button class="chip active" data-f="all">Tất cả<small>52</small></button>
-      <button class="chip" data-f="sac-mau">Sắc Màu Đồng Phục<small>10</small></button>
-      <button class="chip" data-f="chuyen-di">Những Chuyến Đi Cùng Nhau<small>12</small></button>
-      <button class="chip" data-f="dem-hoi-ngo">Đêm Hội Ngộ<small>8</small></button>
-      <button class="chip" data-f="sinh-nhat">Sinh Nhật &amp; Quà Tặng Yêu Thương<small>7</small></button>
-      <button class="chip" data-f="mai-nha">Mái Nhà Chung<small>3</small></button>
-      <button class="chip" data-f="tren-duong">Trên Đường Cùng Nhau<small>7</small></button>
-      <button class="chip" data-f="thiep">Thiệp Mời<small>5</small></button>
-    </div>
-    <div id="albumList">
-      <div class="album-block" data-album="sac-mau">
-        <div class="album-title"><h3>Sắc Màu Đồng Phục</h3><span>10 ảnh</span></div>
-        <div class="album-grid">
-          <figure class="photo"><img src="album-sac-mau-01.jpg" width="1280" height="960" loading="lazy" alt="Lớp A1 trong sắc áo đồng phục rực rỡ · 1"/><div class="cap">Sắc Màu Đồng Phục</div></figure>
-          <figure class="photo"><img src="album-sac-mau-02.jpg" width="1280" height="960" loading="lazy" alt="Lớp A1 trong sắc áo đồng phục rực rỡ · 2"/><div class="cap">Sắc Màu Đồng Phục</div></figure>
-          <figure class="photo"><img src="album-sac-mau-03.jpg" width="1280" height="960" loading="lazy" alt="Lớp A1 trong sắc áo đồng phục rực rỡ · 3"/><div class="cap">Sắc Màu Đồng Phục</div></figure>
-          <figure class="photo"><img src="album-sac-mau-04.jpg" width="1280" height="960" loading="lazy" alt="Lớp A1 trong sắc áo đồng phục rực rỡ · 4"/><div class="cap">Sắc Màu Đồng Phục</div></figure>
-          <figure class="photo"><img src="album-sac-mau-05.jpg" width="1280" height="960" loading="lazy" alt="Lớp A1 trong sắc áo đồng phục rực rỡ · 5"/><div class="cap">Sắc Màu Đồng Phục</div></figure>
-          <figure class="photo"><img src="album-sac-mau-06.jpg" width="960" height="1280" loading="lazy" alt="Lớp A1 trong sắc áo đồng phục rực rỡ · 6"/><div class="cap">Sắc Màu Đồng Phục</div></figure>
-          <figure class="photo"><img src="album-sac-mau-07.jpg" width="960" height="1280" loading="lazy" alt="Lớp A1 trong sắc áo đồng phục rực rỡ · 7"/><div class="cap">Sắc Màu Đồng Phục</div></figure>
-          <figure class="photo"><img src="album-sac-mau-08.jpg" width="960" height="1280" loading="lazy" alt="Lớp A1 trong sắc áo đồng phục rực rỡ · 8"/><div class="cap">Sắc Màu Đồng Phục</div></figure>
-          <figure class="photo"><img src="album-sac-mau-09.jpg" width="960" height="1280" loading="lazy" alt="Lớp A1 trong sắc áo đồng phục rực rỡ · 9"/><div class="cap">Sắc Màu Đồng Phục</div></figure>
-          <figure class="photo"><img src="album-sac-mau-10.jpg" width="1280" height="720" loading="lazy" alt="Lớp A1 trong sắc áo đồng phục rực rỡ · 10"/><div class="cap">Sắc Màu Đồng Phục</div></figure>
-        </div>
-      </div>
+        <article class="chapter reveal" id="ch-IX">
+          <header class="ch-head">
+            <div class="ch-no">IX</div>
+            <div class="ch-text"><span class="ch-era">Hôm nay</span><h3>Cà phê, hoàng hôn & rooftop</h3><p>Quây quần đầu năm, bữa trưa Vô Cực Sơn Trà và những đêm rooftop lung linh.</p></div>
+            <span class="ch-count">9 ảnh</span>
+          </header>
+          <div class="gallery n3">
+            <figure class="photo"><img src="viber_image_2026-01-16_19-41-02-409.jpg" loading="lazy" alt="Hội ngộ A1 đêm đầu năm"/><div class="cap">Đêm đầu năm · Quây quần A1</div></figure>
+            <figure class="photo"><img src="viber_image_2026-01-16_20-02-29-273.jpg" loading="lazy" alt="Tiệc chị em A1 đêm vui"/><div class="cap">Tiệc chị em · Nụ cười rạng rỡ</div></figure>
+            <figure class="photo"><img src="viber_image_2026-01-24_08-55-45-329.jpg" loading="lazy" alt="Cà phê sáng đầu năm cùng A1"/><div class="cap">Cà phê sáng · Đầu năm mới</div></figure>
+            <figure class="photo"><img src="viber_image_2026-01-24_11-35-26-340.jpg" loading="lazy" alt="Tiệc trưa Vô Cực Sơn Trà, Đà Nẵng"/><div class="cap">Vô Cực Sơn Trà · Đà Nẵng</div></figure>
+            <figure class="photo"><img src="viber_image_2026-03-27_17-19-54-860.jpg" loading="lazy" alt="Tiệc rooftop hoàng hôn Sài Gòn"/><div class="cap">Hoàng hôn rooftop · Sài Gòn</div></figure>
+            <figure class="photo"><img src="viber_image_2026-03-28_08-14-50-924.jpg" loading="lazy" alt="Đêm rooftop, đại hội A1 đông đủ"/><div class="cap">Đêm rooftop · Đại hội A1</div></figure>
+            <figure class="photo"><img src="viber_image_2026-04-13_22-05-52-468.jpg" loading="lazy" alt="Skybar nhìn ra Sài Gòn về đêm"/><div class="cap">Skybar · Sài Gòn lung linh</div></figure>
+            <figure class="photo"><img src="viber_image_2026-04-24_19-44-50-321.jpg" loading="lazy" alt="Rooftop ánh nến giữa lòng thành phố"/><div class="cap">Rooftop · Ánh nến thành phố</div></figure>
+            <figure class="photo"><img src="viber_image_2026-05-22_20-05-43-737.jpg" loading="lazy" alt="Tiệc rooftop bên sông đêm Đà Nẵng"/><div class="cap">Rooftop bên sông · Đà Nẵng</div></figure>
+          </div>
+        </article>
 
-      <div class="album-block" data-album="chuyen-di">
-        <div class="album-title"><h3>Những Chuyến Đi Cùng Nhau</h3><span>12 ảnh</span></div>
-        <div class="album-grid">
-          <figure class="photo"><img src="album-chuyen-di-01.jpg" width="1280" height="720" loading="lazy" alt="Chuyến đi cùng Lớp A1 · 1"/><div class="cap">Những Chuyến Đi Cùng Nhau</div></figure>
-          <figure class="photo"><img src="album-chuyen-di-02.jpg" width="1280" height="960" loading="lazy" alt="Chuyến đi cùng Lớp A1 · 2"/><div class="cap">Những Chuyến Đi Cùng Nhau</div></figure>
-          <figure class="photo"><img src="album-chuyen-di-03.jpg" width="1280" height="720" loading="lazy" alt="Chuyến đi cùng Lớp A1 · 3"/><div class="cap">Những Chuyến Đi Cùng Nhau</div></figure>
-          <figure class="photo"><img src="album-chuyen-di-04.jpg" width="1280" height="720" loading="lazy" alt="Chuyến đi cùng Lớp A1 · 4"/><div class="cap">Những Chuyến Đi Cùng Nhau</div></figure>
-          <figure class="photo"><img src="album-chuyen-di-05.jpg" width="1280" height="960" loading="lazy" alt="Chuyến đi cùng Lớp A1 · 5"/><div class="cap">Những Chuyến Đi Cùng Nhau</div></figure>
-          <figure class="photo"><img src="album-chuyen-di-06.jpg" width="1280" height="960" loading="lazy" alt="Chuyến đi cùng Lớp A1 · 6"/><div class="cap">Những Chuyến Đi Cùng Nhau</div></figure>
-          <figure class="photo"><img src="album-chuyen-di-07.jpg" width="1280" height="960" loading="lazy" alt="Chuyến đi cùng Lớp A1 · 7"/><div class="cap">Những Chuyến Đi Cùng Nhau</div></figure>
-          <figure class="photo"><img src="album-chuyen-di-08.jpg" width="1280" height="960" loading="lazy" alt="Chuyến đi cùng Lớp A1 · 8"/><div class="cap">Những Chuyến Đi Cùng Nhau</div></figure>
-          <figure class="photo"><img src="album-chuyen-di-09.jpg" width="1280" height="853" loading="lazy" alt="Chuyến đi cùng Lớp A1 · 9"/><div class="cap">Những Chuyến Đi Cùng Nhau</div></figure>
-          <figure class="photo"><img src="album-chuyen-di-10.jpg" width="1280" height="960" loading="lazy" alt="Chuyến đi cùng Lớp A1 · 10"/><div class="cap">Những Chuyến Đi Cùng Nhau</div></figure>
-          <figure class="photo"><img src="album-chuyen-di-11.jpg" width="1280" height="960" loading="lazy" alt="Chuyến đi cùng Lớp A1 · 11"/><div class="cap">Những Chuyến Đi Cùng Nhau</div></figure>
-          <figure class="photo"><img src="album-chuyen-di-12.jpg" width="1280" height="960" loading="lazy" alt="Chuyến đi cùng Lớp A1 · 12"/><div class="cap">Những Chuyến Đi Cùng Nhau</div></figure>
-        </div>
-      </div>
-
-      <div class="album-block" data-album="dem-hoi-ngo">
-        <div class="album-title"><h3>Đêm Hội Ngộ</h3><span>8 ảnh</span></div>
-        <div class="album-grid">
-          <figure class="photo"><img src="album-dem-hoi-ngo-01.jpg" width="1280" height="960" loading="lazy" alt="Đêm hội ngộ của Lớp A1 · 1"/><div class="cap">Đêm Hội Ngộ</div></figure>
-          <figure class="photo"><img src="album-dem-hoi-ngo-02.jpg" width="1280" height="960" loading="lazy" alt="Đêm hội ngộ của Lớp A1 · 2"/><div class="cap">Đêm Hội Ngộ</div></figure>
-          <figure class="photo"><img src="album-dem-hoi-ngo-03.jpg" width="1280" height="960" loading="lazy" alt="Đêm hội ngộ của Lớp A1 · 3"/><div class="cap">Đêm Hội Ngộ</div></figure>
-          <figure class="photo"><img src="album-dem-hoi-ngo-04.jpg" width="1280" height="960" loading="lazy" alt="Đêm hội ngộ của Lớp A1 · 4"/><div class="cap">Đêm Hội Ngộ</div></figure>
-          <figure class="photo"><img src="album-dem-hoi-ngo-05.jpg" width="1280" height="720" loading="lazy" alt="Đêm hội ngộ của Lớp A1 · 5"/><div class="cap">Đêm Hội Ngộ</div></figure>
-          <figure class="photo"><img src="album-dem-hoi-ngo-06.jpg" width="1280" height="960" loading="lazy" alt="Đêm hội ngộ của Lớp A1 · 6"/><div class="cap">Đêm Hội Ngộ</div></figure>
-          <figure class="photo"><img src="album-dem-hoi-ngo-07.jpg" width="1280" height="960" loading="lazy" alt="Đêm hội ngộ của Lớp A1 · 7"/><div class="cap">Đêm Hội Ngộ</div></figure>
-          <figure class="photo"><img src="album-dem-hoi-ngo-08.jpg" width="1280" height="960" loading="lazy" alt="Đêm hội ngộ của Lớp A1 · 8"/><div class="cap">Đêm Hội Ngộ</div></figure>
-        </div>
-      </div>
-
-      <div class="album-block" data-album="sinh-nhat">
-        <div class="album-title"><h3>Sinh Nhật &amp; Quà Tặng Yêu Thương</h3><span>7 ảnh</span></div>
-        <div class="album-grid">
-          <figure class="photo"><img src="album-sinh-nhat-01.jpg" width="1280" height="960" loading="lazy" alt="Sinh nhật và quà tặng yêu thương · 1"/><div class="cap">Sinh Nhật &amp; Quà Tặng Yêu Thương</div></figure>
-          <figure class="photo"><img src="album-sinh-nhat-02.jpg" width="1280" height="960" loading="lazy" alt="Sinh nhật và quà tặng yêu thương · 2"/><div class="cap">Sinh Nhật &amp; Quà Tặng Yêu Thương</div></figure>
-          <figure class="photo"><img src="album-sinh-nhat-03.jpg" width="1280" height="960" loading="lazy" alt="Sinh nhật và quà tặng yêu thương · 3"/><div class="cap">Sinh Nhật &amp; Quà Tặng Yêu Thương</div></figure>
-          <figure class="photo"><img src="album-sinh-nhat-04.jpg" width="1280" height="960" loading="lazy" alt="Sinh nhật và quà tặng yêu thương · 4"/><div class="cap">Sinh Nhật &amp; Quà Tặng Yêu Thương</div></figure>
-          <figure class="photo"><img src="album-sinh-nhat-05.jpg" width="960" height="1280" loading="lazy" alt="Sinh nhật và quà tặng yêu thương · 5"/><div class="cap">Sinh Nhật &amp; Quà Tặng Yêu Thương</div></figure>
-          <figure class="photo"><img src="album-sinh-nhat-06.jpg" width="960" height="1280" loading="lazy" alt="Sinh nhật và quà tặng yêu thương · 6"/><div class="cap">Sinh Nhật &amp; Quà Tặng Yêu Thương</div></figure>
-          <figure class="photo"><img src="album-sinh-nhat-07.jpg" width="1280" height="960" loading="lazy" alt="Sinh nhật và quà tặng yêu thương · 7"/><div class="cap">Sinh Nhật &amp; Quà Tặng Yêu Thương</div></figure>
-        </div>
-      </div>
-
-      <div class="album-block" data-album="mai-nha">
-        <div class="album-title"><h3>Mái Nhà Chung</h3><span>3 ảnh</span></div>
-        <div class="album-grid">
-          <figure class="photo"><img src="album-mai-nha-01.jpg" width="1600" height="1200" loading="lazy" alt="Gặp mặt tại mái nhà chung · 1"/><div class="cap">Mái Nhà Chung</div></figure>
-          <figure class="photo"><img src="album-mai-nha-02.jpg" width="1600" height="900" loading="lazy" alt="Gặp mặt tại mái nhà chung · 2"/><div class="cap">Mái Nhà Chung</div></figure>
-          <figure class="photo"><img src="album-mai-nha-03.jpg" width="1600" height="900" loading="lazy" alt="Gặp mặt tại mái nhà chung · 3"/><div class="cap">Mái Nhà Chung</div></figure>
-        </div>
-      </div>
-
-      <div class="album-block" data-album="tren-duong">
-        <div class="album-title"><h3>Trên Đường Cùng Nhau</h3><span>7 ảnh</span></div>
-        <div class="album-grid">
-          <figure class="photo"><img src="album-tren-duong-01.jpg" width="960" height="1280" loading="lazy" alt="Trên đường cùng nhau · 1"/><div class="cap">Trên Đường Cùng Nhau</div></figure>
-          <figure class="photo"><img src="album-tren-duong-02.jpg" width="960" height="1280" loading="lazy" alt="Trên đường cùng nhau · 2"/><div class="cap">Trên Đường Cùng Nhau</div></figure>
-          <figure class="photo"><img src="album-tren-duong-03.jpg" width="1280" height="960" loading="lazy" alt="Trên đường cùng nhau · 3"/><div class="cap">Trên Đường Cùng Nhau</div></figure>
-          <figure class="photo"><img src="album-tren-duong-04.jpg" width="1280" height="960" loading="lazy" alt="Trên đường cùng nhau · 4"/><div class="cap">Trên Đường Cùng Nhau</div></figure>
-          <figure class="photo"><img src="album-tren-duong-05.jpg" width="1280" height="960" loading="lazy" alt="Trên đường cùng nhau · 5"/><div class="cap">Trên Đường Cùng Nhau</div></figure>
-          <figure class="photo"><img src="album-tren-duong-06.jpg" width="1280" height="960" loading="lazy" alt="Trên đường cùng nhau · 6"/><div class="cap">Trên Đường Cùng Nhau</div></figure>
-          <figure class="photo"><img src="album-tren-duong-07.jpg" width="1280" height="960" loading="lazy" alt="Trên đường cùng nhau · 7"/><div class="cap">Trên Đường Cùng Nhau</div></figure>
-        </div>
-      </div>
-
-      <div class="album-block" data-album="thiep">
-        <div class="album-title"><h3>Thiệp Mời</h3><span>5 ảnh</span></div>
-        <div class="album-grid">
-          <figure class="photo"><img src="album-thiep-01.jpg" width="1600" height="900" loading="lazy" alt="Thiệp mời Lớp A1 · 1"/><div class="cap">Thiệp Mời</div></figure>
-          <figure class="photo"><img src="album-thiep-02.jpg" width="1024" height="1536" loading="lazy" alt="Thiệp mời Lớp A1 · 2"/><div class="cap">Thiệp Mời</div></figure>
-          <figure class="photo"><img src="album-thiep-03.jpg" width="1600" height="900" loading="lazy" alt="Thiệp mời Lớp A1 · 3"/><div class="cap">Thiệp Mời</div></figure>
-          <figure class="photo"><img src="album-thiep-04.jpg" width="1228" height="819" loading="lazy" alt="Thiệp mời Lớp A1 · 4"/><div class="cap">Thiệp Mời</div></figure>
-          <figure class="photo"><img src="album-thiep-05.jpg" width="1228" height="819" loading="lazy" alt="Thiệp mời Lớp A1 · 5"/><div class="cap">Thiệp Mời</div></figure>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -930,15 +940,16 @@
   const lb = document.getElementById('lightbox');
   const lbImg = document.getElementById('lightbox-img');
   const lbCount = document.getElementById('lb-counter');
+  const lbCap = document.createElement('div'); lbCap.className='lb-cap'; lb.appendChild(lbCap);
   let lbList = [], lbIdx = 0;
   function lbShow(){
     const im = lbList[lbIdx];
     lbImg.src = im.currentSrc || im.src; lbImg.alt = im.alt;
     lbCount.textContent = (lbIdx+1) + ' / ' + lbList.length;
+    const cp = im.closest('.photo').querySelector('.cap'); lbCap.textContent = cp ? cp.textContent : '';
   }
   function lbOpen(img){
-    const scope = img.closest('.album-block') ? document.querySelector('#albumList') : img.closest('.gallery');
-    lbList = Array.from(scope.querySelectorAll('.photo img')).filter(i => !i.closest('.album-block.hide'));
+    lbList = Array.from(document.querySelectorAll('#chronicle .photo img'));
     lbIdx = Math.max(0, lbList.indexOf(img));
     lbShow(); lb.classList.add('active');
   }
@@ -960,14 +971,10 @@
     if(e.key==='Escape') closeVideo();
   });
 
-  // Bộ lọc album
-  document.getElementById('albumChips').addEventListener('click',e=>{
-    const b = e.target.closest('.chip'); if(!b) return;
-    document.querySelectorAll('#albumChips .chip').forEach(c=>c.classList.toggle('active', c===b));
-    const f = b.dataset.f;
-    document.querySelectorAll('.album-block').forEach(blk=>blk.classList.toggle('hide', f!=='all' && blk.dataset.album!==f));
-    if(f!=='all') document.getElementById('album').scrollIntoView({behavior:'smooth'});
-  });
+  // Đánh dấu chặng đang xem trên thanh thời gian
+  const eraLinks=[...document.querySelectorAll('.era-link')];
+  const eio=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){eraLinks.forEach(l=>l.classList.toggle('on',l.getAttribute('href')==='#'+e.target.id));}})},{rootMargin:'-30% 0px -60% 0px'});
+  document.querySelectorAll('.chapter').forEach(c=>eio.observe(c));
 
   // Trình phát video
   const vm = document.getElementById('vmodal'), vp = document.getElementById('vplayer');
